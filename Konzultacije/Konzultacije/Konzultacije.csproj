@@ -156,6 +156,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Kolegij.cs" />
+    <Compile Include="Models\Kolegij_Profesor.cs" />
+    <Compile Include="Models\Profesor.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Studij.cs" />
+    <Compile Include="Models\Termini.cs" />
+    <Compile Include="Models\Upit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,7 +207,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Baza_arhiva\" />
     <Folder Include="Dokumenti\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
