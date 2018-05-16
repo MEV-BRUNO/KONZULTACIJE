@@ -1,3 +1,4 @@
+
 CREATE DATABASE IF NOT EXISTS konzultacije_baza
 
 CREATE TABLE IF NOT EXISTS Studij(
@@ -234,5 +235,4 @@ INSERT INTO kolegij VALUES (NULL, 'Organizacija građenja 2');
 INSERT INTO kolegij VALUES (NULL, 'Tehnologija građenja 2');
 INSERT INTO kolegij VALUES (NULL, 'Održivost arhitekture');
 INSERT INTO kolegij VALUES (NULL, 'Ekologija');
-
 
