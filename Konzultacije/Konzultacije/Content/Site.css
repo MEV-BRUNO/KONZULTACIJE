@@ -22,3 +22,27 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+
+a.mojilink {
+	color: black;
+}
+
+a.mojilink:link {
+	color:black;
+}
+
+a.mojilink:visited {
+	color: black;
+}
+
+a.mojilink:hover {
+	color: black;
+}
+
+a.mojilink:active {
+	color:black;
+	text-decoration: underline;
+}
