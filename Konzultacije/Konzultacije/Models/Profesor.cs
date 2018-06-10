@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 namespace Konzultacije.Models
 {
+    [Table("Profesor")]
     public class Profesor
     {
        public int Id_profesor { get; set; }
