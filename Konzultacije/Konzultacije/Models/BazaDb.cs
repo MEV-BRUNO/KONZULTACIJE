@@ -31,9 +31,21 @@ namespace Konzultacije.Models
             int noviId = studenti.Max(x => x.Id_student) + 1;
             s.Id_student = noviId;
             studenti.Add(s);
-
-
         }
+
+        //Brisanje
+        public void ObrisiStudenta(Student s)
+        {
+            int index = studenti.FindIndex(x => x.Id_student == s.Id_student);
+            studenti.RemoveAt(index);
+        }
+
+        public List<Student> VratiStudente()
+        {
+            return studenti;
+        }
+
+
 
     }
 }
