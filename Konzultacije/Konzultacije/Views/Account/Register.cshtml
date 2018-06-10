@@ -11,7 +11,7 @@
 	@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 	{
 		@Html.AntiForgeryToken()
-		<div class="bg-primary rounded form-group text-white" style="height: 45px; padding:10px; width: 25%;"><p style="text-align:center;">Ispunite podatke za registraciju</p> </div>
+		<div class="bg-primary rounded form-group text-white" style="height: 60px; padding:15px; max-width:280px; min-width:235px;"><p style="text-align:center;">Ispunite podatke za registraciju</p> </div>
 
 		@Html.ValidationSummary()
 		<div class="form-group">

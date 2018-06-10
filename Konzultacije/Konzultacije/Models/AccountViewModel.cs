@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 
 namespace Konzultacije.Models
@@ -19,17 +21,17 @@ namespace Konzultacije.Models
       [Display(Name = "Lozinka")]
       public string Password { get; set; }
   }
- 
-  public class ForgottenPasswordViewModel
-      {
-      [Display(Name = "E-Adresa")]
-      [DataType(DataType.EmailAddress)]
-      public string Email { get; set; }
- 
-      }
+
+    public class ForgottenPasswordViewModel
+    {
+        [Display(Name = "E-Adresa")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
+    }
  
     public class RegisterViewModel
-      {
+    {
       [Required]
       [Display(Name = "Ime")]
        public string Ime { get; set; }
