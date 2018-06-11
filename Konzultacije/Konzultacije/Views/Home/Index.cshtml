@@ -6,7 +6,11 @@
 <div class="jumbotron">
 	<h1>Pozdrav studenti i profesori</h1>
 	<p class="lead">Dobrodošli na stranicu za konzultacije Međimurskog veleučilišta u Čakovcu.</p>
-	<p>@Html.ActionLink("Prijava", "Login", "Account","Home", new {@class="btn btn-dark"})</p>
+	<div class="row col-12">
+		<p>@Html.ActionLink("Prijava", "Login", "Account", "Home", new { @class = "btn btn-dark" })</p>
+		&emsp;
+		<p>@Html.ActionLink("Registracija", "Register", "Account", "Home", new { @class = "btn btn-dark" })</p>
+	</div>
 </div>
 
 <div class="row">

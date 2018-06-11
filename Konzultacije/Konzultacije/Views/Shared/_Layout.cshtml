@@ -9,22 +9,8 @@
 </head>
 <body>
     <div class="navbar bg-dark">
-        <div class="container">
-            <div>
-                
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-					<p>@Html.ActionLink("Konzultacije", "Index", "Home", new { area = "" }, new { @class = "navbar-brand text-light" })</p>
-            </div>
-
-
-            <div>
-                <ul>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-				
-            </div>
+        <div class="container">   
+			<p>@Html.ActionLink("Konzultacije", "Index", "Home", new { area = "" }, new { @class = "navbar-brand text-light" })</p>            
         </div>
     </div>
     <div class="container body-content">
