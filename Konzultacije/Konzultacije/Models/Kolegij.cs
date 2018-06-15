@@ -23,5 +23,7 @@ namespace Konzultacije.Models
         public string Naziv { get; set; }
 
         public virtual ICollection<Kolegij_Profesor> Kolegij_Profesors { get; set; }
+        public virtual ICollection<Termini> Terminis { get; set; }
+        public virtual ICollection<Upit> Upits { get; set; }
     }
 }

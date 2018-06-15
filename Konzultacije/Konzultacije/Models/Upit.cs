@@ -21,8 +21,7 @@ namespace Konzultacije.Models
         public int ProfesorID { get; set; }
         public virtual Profesor Profesor { get; set; }
         public virtual Student Student { get; set; }
-        public virtual ICollection<Profesor> Profesors { get; set; }
-        public virtual ICollection<Student> Students { get; set; }
+        
 
 
         [Column("datum")]

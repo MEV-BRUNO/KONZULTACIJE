@@ -21,7 +21,7 @@ namespace Konzultacije.Models
         public virtual ICollection<Profesor> Profesors { get; set; }
 
         [Display(Name ="ID Kolegija")]
-        [ForeignKey("Profesor")]
+        [ForeignKey("Kolegij")]
         public int KolegijID { get; set; }
         public virtual Kolegij Kolegij { get; set; }
         public virtual ICollection<Kolegij> Kolegijs { get; set; }
