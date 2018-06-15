@@ -11,10 +11,9 @@ namespace Konzultacije.Models
     [Table("Profesor")]
     public class Profesor
     {
-        [Column("id_profesor")]
-        [Key]
+
         [Display(Name ="ID Profesora")]        
-        public int Id_profesor { get; set; }
+        public int ProfesorID { get; set; }
 
 
         [Column("ime_i_prezime")]

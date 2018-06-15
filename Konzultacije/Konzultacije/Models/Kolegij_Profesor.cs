@@ -12,15 +12,15 @@ namespace Konzultacije.Models
     [Table("Kolegij_profesor")]
     public class Kolegij_Profesor
     {
-        [Column("id_profesor")]
-        [Display(Name ="ID Profesor")]
-        [ForeignKey("Profesor")]
-        public int Id_profesor { get; set; }
+        
+        [Display(Name = "ID Profesor")]
+        public int ProfesorID { get; set; }
+        public virtual Profesor Profesor{ get; set; }
+        public virtual ICollection<Profesor> Profesors { get; set; }
 
         [Column("id_kolegij")]
         [Display(Name ="ID Kolegij")]
-        [ForeignKey("Kolegij")]
-        public int Id_kolegij { get; set; }
+        public int KolegijID { get; set; }
 
     }
 }

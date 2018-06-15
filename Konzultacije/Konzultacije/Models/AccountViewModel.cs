@@ -13,13 +13,14 @@ namespace Konzultacije.Models
   public class LoginViewModel
   {
        [Required]
-       [Display(Name = "Korisnicko ime")]
-       public string UserName { get; set; }
-   
+       [Display(Name = "E-Adresa")]
+       [DataType(DataType.EmailAddress)]
+       public string Email { get; set; }
+
       [Required]
       [DataType(DataType.Password)]
       [Display(Name = "Lozinka")]
-      public string Password { get; set; }
+      public string Lozinka { get; set; }
   }
 
     public class ForgottenPasswordViewModel
@@ -33,32 +34,24 @@ namespace Konzultacije.Models
     public class RegisterViewModel
     {
       [Required]
-      [Display(Name = "Ime")]
-       public string Ime { get; set; }
- 
-      [Required]
-      [Display(Name = "Prezime")]
-      public string Prezime { get; set; }
- 
-      [Required]
-      [Display(Name = "Korisnicko ime")]
-      public string UserName { get; set; }
- 
+      [Display(Name = "Ime i prezime")]
+      public string Ime_i_prezime { get; set; }
+
       [Required]
       [Display(Name = "E-Adresa")]
       [DataType(DataType.EmailAddress)]
       public String Email { get; set; }
 
       [Required]
-      //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+      [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
       [DataType(DataType.Password)]
       [Display(Name = "Lozinka")]
-      public string Password { get; set; }
+      public string Lozinka { get; set; }
 
       [DataType(DataType.Password)]
       [Display(Name = "Ponovite lozinku")]
       [Compare("Password", ErrorMessage = "Prva lozinka i ponovljena lozinka se NE poklapaju.")]
-      public string ConfirmPassword { get; set; }
+      public string PonoviLozinku { get; set; }
 
     }
 }
