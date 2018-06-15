@@ -21,8 +21,8 @@ namespace Konzultacije.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak.")]
         public string Naziv { get; set; }
 
-
-        public ICollection<Student> Students { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
 
     }
 }

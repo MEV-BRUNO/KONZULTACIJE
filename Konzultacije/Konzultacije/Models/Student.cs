@@ -53,10 +53,12 @@ namespace Konzultacije.Models
 
 
 
-        [Display(Name ="ID Studija")]       
+        [Display(Name ="ID Studija")]
         public int StudijID { get; set; }
         public virtual Studij Studij { get; set; }
         public virtual ICollection<Studij> Studijs { get; set; }
+
+        
 
 
 

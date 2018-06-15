@@ -11,13 +11,13 @@ namespace Konzultacije.Models
     public class BazaDbContext : DbContext
     {
         // Popis svih tablica u bazi
-        public virtual DbSet<Student> Student { get; set; }
-        public virtual DbSet<Profesor> Profesor { get; set; }
-        public virtual DbSet<Studij> Studij { get; set; }
-        public virtual DbSet<Kolegij> Kolegij { get; set; }
-        public virtual DbSet<Upit> Upit { get; set; }
-        public virtual DbSet<Termini> Termini { get; set; }
-        public virtual DbSet<Kolegij_Profesor> Kolegij_Profesor { get; set; }
+        public DbSet<Student> Student { get; set; }
+        public DbSet<Profesor> Profesor { get; set; }
+        public DbSet<Studij> Studij { get; set; }
+        public DbSet<Kolegij> Kolegij { get; set; }
+        public DbSet<Upit> Upit { get; set; }
+        public DbSet<Termini> Termini { get; set; }
+        public DbSet<Kolegij_Profesor> Kolegij_Profesor { get; set; }
 
     }
 }

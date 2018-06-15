@@ -35,7 +35,7 @@ namespace Konzultacije.Models
     {
       [Required]
       [Display(Name = "Ime i prezime")]
-      public string Ime_i_prezime { get; set; }
+      public string Ime_I_Prezime { get; set; }
 
       [Required]
       [Display(Name = "E-Adresa")]
@@ -46,12 +46,12 @@ namespace Konzultacije.Models
       [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
       [DataType(DataType.Password)]
       [Display(Name = "Lozinka")]
-      public string Lozinka { get; set; }
+      public string Password { get; set; }
 
       [DataType(DataType.Password)]
       [Display(Name = "Ponovite lozinku")]
       [Compare("Password", ErrorMessage = "Prva lozinka i ponovljena lozinka se NE poklapaju.")]
-      public string PonoviLozinku { get; set; }
+      public string ConfirmPassword { get; set; }
 
     }
 }
