@@ -13,20 +13,15 @@ namespace Konzultacije.Models
     {
         [Column("id_upit")]
         [Display(Name ="ID Upita")]
-        [Key]
-        public int Id_upit { get; set; }
+        public int UpitID { get; set; }
 
 
-        [Column("id_student")]
-        [Display(Name ="ID Studenta")]
-        [ForeignKey("Student")]
-        public int Id_student { get; set; }
-
-
-        [Column("id_profesor")]
-        [Display(Name ="ID Profesora")]
-        [ForeignKey("Profesor")]
-        public int Id_profesor { get; set; }
+        public int StudentID { get; set; }
+        public int ProfesorID { get; set; }
+        public virtual Profesor Profesor { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual ICollection<Profesor> Profesors { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
 
 
         [Column("datum")]

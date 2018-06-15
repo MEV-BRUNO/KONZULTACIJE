@@ -11,16 +11,18 @@ namespace Konzultacije.Models
     [Table("Studij")]
     public class Studij
     {
-        [Column("id_studij")]
-        [Display(Name ="ID Studija")]
-        [Key]
-        public int Id_studij { get; set; }
+
+        [Display(Name = "ID Studija")]
+        public int StudijID { get; set; }
 
 
         [Column("naziv")]
-        [Display(Name ="Naziv studija")]
-        [Required(AllowEmptyStrings = false, ErrorMessage ="{0} je obavezan podatak.")]
+        [Display(Name = "Naziv studija")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak.")]
         public string Naziv { get; set; }
+
+
+        public ICollection<Student> Students { get; set; }
 
     }
 }

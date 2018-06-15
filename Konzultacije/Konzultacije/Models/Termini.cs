@@ -11,16 +11,16 @@ namespace Konzultacije.Models
     [Table("Termini")]
     public class Termini
     {
-        [Column("id_profesor")]
-        [Display(Name ="ID Profesor")]
-        [ForeignKey("Profesor")]
-        public int Id_profesor { get; set; }
 
+        [Display(Name = "ID Profesora")]
+        public int ProfesorID { get; set; }
+        public virtual Profesor Profesor { get; set; }
+        public virtual ICollection<Profesor> Profesors { get; set; }
 
-        [Column("id_kolegij")]
-        [Display(Name ="ID Kolegij")]
-        [ForeignKey("Kolegij")]
-        public int Id_kolegij { get; set; }
+        [Display(Name ="ID Kolegija")]
+        public int KolegijID { get; set; }
+        public virtual Kolegij Kolegij { get; set; }
+        public virtual ICollection<Kolegij> Kolegijs { get; set; }
 
 
         [Column("dan_tjedan")]
