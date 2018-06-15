@@ -12,7 +12,7 @@ namespace Konzultacije.Models
     [Table("Student")]
     public class Student
     {
-
+        [Key]
         [Display(Name = "ID Studenta")]
         public int StudentID { get; set; }
 
@@ -23,9 +23,10 @@ namespace Konzultacije.Models
         public string Ime_I_Prezime { get; set; }
 
         [Display(Name = "ID Studija")]
+        [ForeignKey("Studij")]
         public int StudijID { get; set; }
         public virtual Studij Studij { get; set; }
-        public virtual ICollection<Studij> Studijs { get; set; }
+        
 
         [Column("email")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]

@@ -11,8 +11,9 @@ namespace Konzultacije.Models
     [Table("Upit")]
     public class Upit
     {
+        [Key]
         [Column("id_upit")]
-        [Display(Name ="ID Upita")]
+        [Display(Name = "ID Upita")]
         public int UpitID { get; set; }
 
 
@@ -25,27 +26,27 @@ namespace Konzultacije.Models
 
 
         [Column("datum")]
-        [Display(Name ="Datum upita")]
+        [Display(Name = "Datum upita")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0: hh:mm:ss dd.MM.yyyy.}", ApplyFormatInEditMode = true)]
-        [Required(ErrorMessage ="{0} je obavezno polje.")]
+        [Required(ErrorMessage = "{0} je obavezno polje.")]
         public DateTime Datum { get; set; }
 
 
         [Column("naslov")]
-        [Display(Name ="Naslov")]
-        [Required(AllowEmptyStrings = false, ErrorMessage ="{0} je obavezno polje.")]
+        [Display(Name = "Naslov")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezno polje.")]
         public string Naslov { get; set; }
 
 
         [Column("opis")]
-        [Display(Name ="Opis")]
+        [Display(Name = "Opis")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezno polje.")]
         public string Opis { get; set; }
 
 
         [Column("dogovoren")]
-        [Display(Name ="Dogovoreno")]
+        [Display(Name = "Dogovoreno")]
         public bool Odgovoren { get; set; }
 
     }
