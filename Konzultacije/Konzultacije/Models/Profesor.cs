@@ -12,7 +12,7 @@ namespace Konzultacije.Models
     public class Profesor
     {
 
-       
+        [Key]       
         [Display(Name ="ID Profesora")]
         public int ProfesorID { get; set; }
 

@@ -11,6 +11,7 @@ namespace Konzultacije.Models
     [Table("Kolegij")]
     public class Kolegij
     {
+        [Key]
         [Column("id_kolegij")]
         [Display(Name ="ID Kolegija")]
         public int KolegijID { get; set; }

@@ -22,7 +22,10 @@ namespace Konzultacije.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         public string Ime_I_Prezime { get; set; }
 
-
+        [Display(Name = "ID Studija")]
+        public int StudijID { get; set; }
+        public virtual Studij Studij { get; set; }
+        public virtual ICollection<Studij> Studijs { get; set; }
 
         [Column("email")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
@@ -53,10 +56,7 @@ namespace Konzultacije.Models
 
 
 
-        [Display(Name ="ID Studija")]
-        public int StudijID { get; set; }
-        public virtual Studij Studij { get; set; }
-        public virtual ICollection<Studij> Studijs { get; set; }
+
 
         
 
