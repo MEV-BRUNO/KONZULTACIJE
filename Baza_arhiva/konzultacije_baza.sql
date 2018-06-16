@@ -1,4 +1,3 @@
-
 CREATE DATABASE IF NOT EXISTS konzultacije_baza
 
 CREATE TABLE IF NOT EXISTS Studij(
@@ -10,6 +9,8 @@ CREATE TABLE IF NOT EXISTS Kolegij(
 	id_kolegij INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	naziv VARCHAR(225)
 );
+
+
 
 CREATE TABLE IF NOT EXISTS Profesor(
 	id_profesor INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -43,7 +44,9 @@ CREATE TABLE IF NOT EXISTS Upit(
 	odgovoren BOOL
 );
 
+
 CREATE TABLE IF NOT EXISTS Termini(
+	id_termina INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	id_profesor INT,
 	FOREIGN KEY(id_profesor) REFERENCES Profesor(id_profesor),
 	id_kolegij INT,
@@ -55,6 +58,7 @@ CREATE TABLE IF NOT EXISTS Termini(
 
 
 CREATE TABLE IF NOT EXISTS Kolegij_profesor(
+	id_kolegij_profesor INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
 	id_profesor INT,
 	FOREIGN KEY(id_profesor) REFERENCES Profesor(id_profesor),
 	id_kolegij INT,

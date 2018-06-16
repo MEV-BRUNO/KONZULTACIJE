@@ -12,7 +12,9 @@ namespace Konzultacije.Models
     [Table("Kolegij_profesor")]
     public class Kolegij_Profesor
     {
-        
+        [Display(Name ="Kolegij_Profesor ID")]
+        [Key]
+        public int Kolegij_ProfesorID { get; set; }
 
         [Display(Name ="ID Profesora")]     
         [ForeignKey("Profesor")]

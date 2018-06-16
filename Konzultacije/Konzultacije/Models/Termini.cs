@@ -12,6 +12,11 @@ namespace Konzultacije.Models
     public class Termini
     {
 
+        [Display(Name ="ID Termina")]
+        [Key]
+        public int TerminiID { get; set; }
+
+        
         [Display(Name = "ID Profesora")]
         [ForeignKey("Profesor")]
         public int ProfesorID { get; set; }
