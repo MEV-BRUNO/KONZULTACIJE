@@ -20,6 +20,8 @@ namespace Konzultacije.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private BazaDbContext baza = new BazaDbContext();
+        
 
         public AccountController()
         {
@@ -92,18 +94,15 @@ namespace Konzultacije.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public ActionResult Register(RegisterViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    return RedirectToAction("Index", "Home");
-                }
-                AddErrors(result);
+                
+                var user = new RegisterViewModel { Ime_I_Prezime = model.Ime_I_Prezime, Email = model.Email, Password = model.Password, ConfirmPassword = model.ConfirmPassword };
+                baza.Registracija.Add(user);
+                return RedirectToAction("Index", "Home");
             }
             
             return View(model);
