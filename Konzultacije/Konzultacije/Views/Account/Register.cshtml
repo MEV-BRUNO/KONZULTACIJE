@@ -1,10 +1,11 @@
 ﻿@using Konzultacije.Models
 @model Konzultacije.Models.RegisterViewModel
+
 @{
 	ViewBag.Title = "Konzultacije";
 }
 
-<h2>@ViewBag.Title</h2>
+<br />
 &emsp;&emsp;
 
 <div>
@@ -15,14 +16,9 @@
 
 		@Html.ValidationSummary()
 		<div class="form-group">
-			@Html.TextBoxFor(Model => Model.Ime, new { @Value = "Ime", @class = "form-control", @onclick = "this.value =''" })
+			@Html.TextBoxFor(Model => Model.Ime_I_Prezime, new { @Value = "Ime i prezime", @class = "form-control", @onclick = "this.value =''" })
 		</div>
-		<div class="form-group">
-			@Html.TextBoxFor(Model => Model.Prezime, new { @Value = "Prezime", @class = "form-control", @onclick = "this.value =''" })
-		</div>
-		<div class="form-group">
-			@Html.TextBoxFor(Model => Model.UserName, new { @Value = "Korisničko Ime", @class = "form-control", @onclick = "this.value =''" })
-		</div>
+
 		<div class="form-group">
 			@Html.TextBoxFor(Model => Model.Email, new { @Value = "Vašu E-mail adresu", @class = "form-control", @onclick = "this.value =''" })
 		</div>

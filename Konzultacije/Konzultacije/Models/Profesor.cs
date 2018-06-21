@@ -11,10 +11,10 @@ namespace Konzultacije.Models
     [Table("Profesor")]
     public class Profesor
     {
-        [Column("id_profesor")]
-        [Key]
-        [Display(Name ="ID Profesora")]        
-        public int Id_profesor { get; set; }
+
+        [Key]       
+        [Display(Name ="ID Profesora")]
+        public int ProfesorID { get; set; }
 
 
         [Column("ime_i_prezime")]
@@ -48,5 +48,9 @@ namespace Konzultacije.Models
         [Display(Name ="Aktivan")]
         public bool Aktivan { get; set; }
 
+        public virtual ICollection<Kolegij_Profesor> Kolegij_Profesors { get; set; }
+        public virtual ICollection<Termini> Terminis { get; set; }
+        public virtual ICollection<Upit> Upits { get; set; }
+            
     }
 }

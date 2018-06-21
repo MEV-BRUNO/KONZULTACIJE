@@ -6,7 +6,7 @@
 	ViewBag.Title = "Konzultacije";
 }
 
-<h2>@ViewBag.Title</h2>
+<br />
 &emsp;&emsp;
 
 <div>
@@ -19,10 +19,10 @@
 
 			@Html.ValidationSummary(true)
 			<div class="form-group">
-				@Html.TextBoxFor(Model => Model.UserName, new { Value = "Korisničko ime", @class = "form-control", @onclick = "this.value =''" })
+				@Html.TextBoxFor(Model => Model.Email, new { @Value = "Vaša E-mail adresa", @class = "form-control", @onclick = "this.value =''" })
 			</div>
 			<div class="form-group">
-				@Html.PasswordFor(Model => Model.Password, new { Value = "Lozinka", @class = "form-control", @onclick = "this.value =''" })
+				@Html.PasswordFor(Model => Model.Lozinka, new { Value = "Lozinka", @class = "form-control", @onclick = "this.value =''" })
 			</div>
 
 
