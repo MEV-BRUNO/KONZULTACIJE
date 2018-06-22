@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS konzultacije_baza
+﻿CREATE DATABASE IF NOT EXISTS konzultacije_baza
 
 CREATE TABLE IF NOT EXISTS Studij(
 	id_studij INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -65,12 +65,12 @@ CREATE TABLE IF NOT EXISTS Kolegij_profesor(
 	FOREIGN KEY(id_kolegij) REFERENCES Kolegij(id_kolegij)
 );
 
-create table if not exists Registracija(
-	id_registracija int primary key not null auto_increment,
-	ime_i_prezime varchar(225),
-	email varchar(225),
-	lozinka varchar(225),
-	pLozinka varchar(225)
+CREATE TABLE IF NOT EXISTS Registracija(
+	id_registracija INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	ime_i_prezime VARCHAR(225),
+	email VARCHAR(225),
+	lozinka VARCHAR(225),
+	pLozinka VARCHAR(225)
 );
 
 
