@@ -18,7 +18,7 @@ namespace Konzultacije.Models
         public DbSet<Upit> Upit { get; set; }
         public DbSet<Termini> Termini { get; set; }
         public DbSet<Kolegij_Profesor> Kolegij_Profesor { get; set; }
-        public DbSet<RegisterViewModel> Registracija { get; set; }
+        
 
     }
 }

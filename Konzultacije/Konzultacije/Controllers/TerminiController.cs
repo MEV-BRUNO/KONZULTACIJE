@@ -10,118 +10,116 @@ using Konzultacije.Models;
 
 namespace Konzultacije.Controllers
 {
-    public class StudentController : Controller
+    public class TerminiController : Controller
     {
         private BazaDbContext db = new BazaDbContext();
 
-        // GET: Student
+        // GET: Termini
         public ActionResult Index()
         {
-            var student = db.Student.Include(s => s.Studij);
-            return View(student.ToList());
+            var termini = db.Termini.Include(t => t.Kolegij).Include(t => t.Profesor);
+            return View(termini.ToList());
         }
 
-        //ovo sam ja pisal
-        public ActionResult Index(Student s)
-        {
-            return View(s);
-        }
-
-        // GET: Student/Details/5
+        // GET: Termini/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Student.Find(id);
-            if (student == null)
+            Termini termini = db.Termini.Find(id);
+            if (termini == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(termini);
         }
 
-        // GET: Student/Create
+        // GET: Termini/Create
         public ActionResult Create()
         {
-            ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv");
+            ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv");
+            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             return View();
         }
 
-        // POST: Student/Create
+        // POST: Termini/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentID,Ime_I_Prezime,StudijID,Email,Lozinka,Aktivacijski_link,Aktivan")] Student student)
+        public ActionResult Create([Bind(Include = "TerminiID,ProfesorID,KolegijID,Dan_Tjedan,Vrijeme_Od,Vrijeme_Do")] Termini termini)
         {
             if (ModelState.IsValid)
             {
-                db.Student.Add(student);
+                db.Termini.Add(termini);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv", student.StudijID);
-            return View(student);
+            ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
+            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", termini.ProfesorID);
+            return View(termini);
         }
 
-        // GET: Student/Edit/5
+        // GET: Termini/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Student.Find(id);
-            if (student == null)
+            Termini termini = db.Termini.Find(id);
+            if (termini == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv", student.StudijID);
-            return View(student);
+            ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
+            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", termini.ProfesorID);
+            return View(termini);
         }
 
-        // POST: Student/Edit/5
+        // POST: Termini/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentID,Ime_I_Prezime,StudijID,Email,Lozinka,Aktivacijski_link,Aktivan")] Student student)
+        public ActionResult Edit([Bind(Include = "TerminiID,ProfesorID,KolegijID,Dan_Tjedan,Vrijeme_Od,Vrijeme_Do")] Termini termini)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
+                db.Entry(termini).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv", student.StudijID);
-            return View(student);
+            ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
+            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", termini.ProfesorID);
+            return View(termini);
         }
 
-        // GET: Student/Delete/5
+        // GET: Termini/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Student.Find(id);
-            if (student == null)
+            Termini termini = db.Termini.Find(id);
+            if (termini == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(termini);
         }
 
-        // POST: Student/Delete/5
+        // POST: Termini/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Student.Find(id);
-            db.Student.Remove(student);
+            Termini termini = db.Termini.Find(id);
+            db.Termini.Remove(termini);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

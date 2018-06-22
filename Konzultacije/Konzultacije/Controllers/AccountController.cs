@@ -39,10 +39,26 @@ namespace Konzultacije.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
+            List<Student> students = baza.Student.ToList();
+            List<Profesor> profesors = baza.Profesor.ToList();
             if(ModelState.IsValid)
             {
-                return View(model);
+                foreach(Student s in students)
+                {
+                    if (model.Email == s.Email && model.Lozinka == s.Lozinka)
+                    { return View("Index", s); }
+                        //RedirectToAction("Index", "Student", "Account"); }
+                    
+                }
+                foreach(Profesor p in profesors)
+                {
+                    if(model.Email == p.Email && model.Lozinka == p.Lozinka)
+                    { return RedirectToAction("Index", "Profesor", "Account"); }
+                }
+                
             }
+            //AddErrors();
+            ViewBag.Message ="Ovog korisnika nema u bazi. ";
             return View();
         }
 
@@ -56,23 +72,8 @@ namespace Konzultacije.Controllers
             return View();
         }
 
-        // POST: Account/Login
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel model)
-        {
-            
-            if (ModelState.IsValid)
-            {
-                
-                var user = new RegisterViewModel { Ime_I_Prezime = model.Ime_I_Prezime, Email = model.Email, Password = model.Password, ConfirmPassword = model.ConfirmPassword };
-                baza.Registracija.Add(user);
-                return RedirectToAction("Index", "Home");
-            }
-            
-            return View(model);
-        }
+        
+        
 
         // GET: Account/Login
         [HttpGet]

@@ -10,118 +10,116 @@ using Konzultacije.Models;
 
 namespace Konzultacije.Controllers
 {
-    public class StudentController : Controller
+    public class UpitController : Controller
     {
         private BazaDbContext db = new BazaDbContext();
 
-        // GET: Student
+        // GET: Upit
         public ActionResult Index()
         {
-            var student = db.Student.Include(s => s.Studij);
-            return View(student.ToList());
+            var upit = db.Upit.Include(u => u.Profesor).Include(u => u.Student);
+            return View(upit.ToList());
         }
 
-        //ovo sam ja pisal
-        public ActionResult Index(Student s)
-        {
-            return View(s);
-        }
-
-        // GET: Student/Details/5
+        // GET: Upit/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Student.Find(id);
-            if (student == null)
+            Upit upit = db.Upit.Find(id);
+            if (upit == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(upit);
         }
 
-        // GET: Student/Create
+        // GET: Upit/Create
         public ActionResult Create()
         {
-            ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv");
+            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
+            ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime");
             return View();
         }
 
-        // POST: Student/Create
+        // POST: Upit/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentID,Ime_I_Prezime,StudijID,Email,Lozinka,Aktivacijski_link,Aktivan")] Student student)
+        public ActionResult Create([Bind(Include = "UpitID,StudentID,ProfesorID,Datum,Naslov,Opis,Odgovoren")] Upit upit)
         {
             if (ModelState.IsValid)
             {
-                db.Student.Add(student);
+                db.Upit.Add(upit);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv", student.StudijID);
-            return View(student);
+            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
+            ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
+            return View(upit);
         }
 
-        // GET: Student/Edit/5
+        // GET: Upit/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Student.Find(id);
-            if (student == null)
+            Upit upit = db.Upit.Find(id);
+            if (upit == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv", student.StudijID);
-            return View(student);
+            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
+            ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
+            return View(upit);
         }
 
-        // POST: Student/Edit/5
+        // POST: Upit/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentID,Ime_I_Prezime,StudijID,Email,Lozinka,Aktivacijski_link,Aktivan")] Student student)
+        public ActionResult Edit([Bind(Include = "UpitID,StudentID,ProfesorID,Datum,Naslov,Opis,Odgovoren")] Upit upit)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
+                db.Entry(upit).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv", student.StudijID);
-            return View(student);
+            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
+            ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
+            return View(upit);
         }
 
-        // GET: Student/Delete/5
+        // GET: Upit/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Student.Find(id);
-            if (student == null)
+            Upit upit = db.Upit.Find(id);
+            if (upit == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(upit);
         }
 
-        // POST: Student/Delete/5
+        // POST: Upit/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Student.Find(id);
-            db.Student.Remove(student);
+            Upit upit = db.Upit.Find(id);
+            db.Upit.Remove(upit);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
