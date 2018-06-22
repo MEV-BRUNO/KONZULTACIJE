@@ -46,7 +46,7 @@ namespace Konzultacije.Controllers
                 foreach(Student s in students)
                 {
                     if (model.Email == s.Email && model.Lozinka == s.Lozinka)
-                    { return View("Index", s); }
+                    { return View("~/Views/Student/Index.cshtml", s); }
                         //RedirectToAction("Index", "Student", "Account"); }
                     
                 }

@@ -15,15 +15,19 @@ namespace Konzultacije.Controllers
         private BazaDbContext db = new BazaDbContext();
 
         // GET: Student
-        public ActionResult Index()
+        public ActionResult Popis()
         {
             var student = db.Student.Include(s => s.Studij);
             return View(student.ToList());
         }
 
         //ovo sam ja pisal
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Index(Student s)
         {
+
             return View(s);
         }
 
