@@ -13,6 +13,8 @@ namespace Konzultacije.Models
     {
 
         [Display(Name = "ID Studija")]
+        [Key]
+        [Column("id_studij")]
         public int StudijID { get; set; }
 
 

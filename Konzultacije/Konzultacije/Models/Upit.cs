@@ -16,11 +16,19 @@ namespace Konzultacije.Models
         [Display(Name = "ID Upita")]
         public int UpitID { get; set; }
 
-
+        
+        [Display(Name ="ID Studenta")]
+        [Column("id_student")]
+        [ForeignKey("Student")]
         public int StudentID { get; set; }
+        public virtual Student Student { get; set; }
+
+        [Display(Name ="ID Profesora")]
+        [Column("id_profesor")]
+        [ForeignKey("Profesor")]
         public int ProfesorID { get; set; }
         public virtual Profesor Profesor { get; set; }
-        public virtual Student Student { get; set; }
+        
         
 
 

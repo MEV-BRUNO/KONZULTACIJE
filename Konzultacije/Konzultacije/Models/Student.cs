@@ -14,6 +14,7 @@ namespace Konzultacije.Models
     {
         [Key]
         [Display(Name = "ID Studenta")]
+        [Column("id_student")]
         public int StudentID { get; set; }
 
 
@@ -23,6 +24,7 @@ namespace Konzultacije.Models
         public string Ime_I_Prezime { get; set; }
 
         [Display(Name = "ID Studija")]
+        [Column("id_studij")]
         [ForeignKey("Studij")]
         public int StudijID { get; set; }
         public virtual Studij Studij { get; set; }

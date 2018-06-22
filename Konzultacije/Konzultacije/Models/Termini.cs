@@ -14,16 +14,19 @@ namespace Konzultacije.Models
 
         [Display(Name ="ID Termina")]
         [Key]
+        [Column("id_termina")]
         public int TerminiID { get; set; }
 
         
         [Display(Name = "ID Profesora")]
+        [Column("id_profesor")]
         [ForeignKey("Profesor")]
         public int ProfesorID { get; set; }
         public virtual Profesor Profesor { get; set; }
         
 
         [Display(Name = "ID Kolegija")]
+        [Column("id_kolegij")]
         [ForeignKey("Kolegij")]
         public int KolegijID { get; set; }
         public virtual Kolegij Kolegij { get; set; }
