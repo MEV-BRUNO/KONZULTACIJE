@@ -14,6 +14,7 @@ namespace Konzultacije.Models
 
         [Key]       
         [Display(Name ="ID Profesora")]
+        [Column("id_profesor")]
         public int ProfesorID { get; set; }
 
 
