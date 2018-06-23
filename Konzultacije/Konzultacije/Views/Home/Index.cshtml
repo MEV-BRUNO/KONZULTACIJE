@@ -9,7 +9,7 @@
 	<div class="row col-12">
 		<p>@Html.ActionLink("Prijava", "Login", "Account", "Home", new { @class = "btn btn-dark" })</p>
 		&emsp;
-		<p>@Html.ActionLink("Registracija", "Register", "Account", "Home", new { @class = "btn btn-dark" })</p>
+		<p>@Html.ActionLink("Registracija", "Register", "Account", "Home", new { @class = "btn btn-secondary" })</p>
 	</div>
 </div>
 
@@ -19,7 +19,7 @@
 		<p>
 			Ovdje se nalazi detaljan pregled i informacije svih objavljenih termina konzultacija te mogucnost filtriranja informacija po upisanom pojmu.
 		</p>
-		<!--<p>@*Html.ActionLink()*@</p>-->
+		<p>@Html.ActionLink("Termini konzultacija »", "Index", "Termini", "Home", new { @class = "btn btn-secondary"})</p>
 	</div>
 	<div class="col-md-6">
 		<h2>O projektu</h2>
