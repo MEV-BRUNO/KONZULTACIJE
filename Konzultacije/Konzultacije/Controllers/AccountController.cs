@@ -20,9 +20,9 @@ namespace Konzultacije.Controllers
     {
         
         private BazaDbContext baza = new BazaDbContext();
-        
 
-        
+
+
 
 
         // GET: Account/Login
@@ -30,7 +30,17 @@ namespace Konzultacije.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-            return View();
+            //if (Session["Student"] != null)
+            //{
+            //    return View("~/Views/Student/Index.cshtml", new { s = Session["Profesor"].ToString() });
+            //} else if (Session["Profesor"]!=null)
+            //{
+            //    return View("~/Views/Profesor/Index.cshtml", new { s = Session["Profesor"].ToString() });
+            //}
+            //else 
+            //{
+                return View();
+            //}
         }
 
         // POST: Account/Login
@@ -46,14 +56,20 @@ namespace Konzultacije.Controllers
                 foreach(Student s in students)
                 {
                     if (model.Email == s.Email && model.Lozinka == s.Lozinka)
-                    { return View("~/Views/Student/Index.cshtml", s); }
+                    {
+                        Session["Student"] = s.StudentID;
+                        return View("~/Views/Student/Index.cshtml", s);
+                    }
                         //RedirectToAction("Index", "Student", "Account"); 
                     
                 }
                 foreach(Profesor p in profesors)
                 {
                     if (model.Email == p.Email && model.Lozinka == p.Lozinka)
-                    { return View("~/Views/Profesor/Index.cshtml", p); }
+                    {
+                        Session["Profesor"] = p.ProfesorID;
+                        return View("~/Views/Profesor/Index.cshtml", p);
+                    }
                         //RedirectToAction("Index", "Profesor", "Account");
                 }
                 
