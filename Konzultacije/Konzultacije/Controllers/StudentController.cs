@@ -28,7 +28,7 @@ namespace Konzultacije.Controllers
         public ActionResult Index(Student s)
         {
 
-            return View(s);
+            return View(s);  
         }
 
         // GET: Student/Details/5
@@ -53,12 +53,11 @@ namespace Konzultacije.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Student.Find(s.StudentID);
-            if (student == null)
+            if (s == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            return View(s);
         }
 
         // GET: Student/Create

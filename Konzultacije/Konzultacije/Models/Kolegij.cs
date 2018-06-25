@@ -24,6 +24,6 @@ namespace Konzultacije.Models
 
         public virtual ICollection<Kolegij_Profesor> Kolegij_Profesors { get; set; }
         public virtual ICollection<Termini> Terminis { get; set; }
-        public virtual ICollection<Upit> Upits { get; set; }
+        
     }
 }

@@ -1,57 +1,68 @@
 ﻿@model IEnumerable<Konzultacije.Models.Termini>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Popis svih termina";
 }
 
-<h2>Index</h2>
+<br />
+<h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Kolegij.Naziv)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Dan_Tjedan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vrijeme_Od)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vrijeme_Do)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Kolegij.Naziv)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Dan_Tjedan)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Vrijeme_Od)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Vrijeme_Do)
+		</th>
+		<th></th>
+	</tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kolegij.Naziv)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Profesor.Ime_I_Prezime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dan_Tjedan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vrijeme_Od)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vrijeme_Do)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TerminiID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TerminiID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TerminiID })
-        </td>
-    </tr>
-}
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Kolegij.Naziv)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Profesor.Ime_I_Prezime)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Dan_Tjedan)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Vrijeme_Od)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Vrijeme_Do)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.TerminiID }) |
+				@Html.ActionLink("Details", "Details", new { id = item.TerminiID }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.TerminiID })
+			</td>
+		</tr>
+	}
 
 </table>
+
+<br /><hr />
+<div class="row">
+	<div class="col-md-6">
+		<p>Možete i ovdje napraviti unos novog termina</p>
+		<p>
+			@Html.ActionLink("Unos novog termina »", "Create", "Termini", new { @class = "btn btn-info" })
+		</p>
+	</div>
+
+</div>

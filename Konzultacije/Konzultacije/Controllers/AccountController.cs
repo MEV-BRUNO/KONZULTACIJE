@@ -47,13 +47,14 @@ namespace Konzultacije.Controllers
                 {
                     if (model.Email == s.Email && model.Lozinka == s.Lozinka)
                     { return View("~/Views/Student/Index.cshtml", s); }
-                        //RedirectToAction("Index", "Student", "Account"); }
+                        //RedirectToAction("Index", "Student", "Account"); 
                     
                 }
                 foreach(Profesor p in profesors)
                 {
-                    if(model.Email == p.Email && model.Lozinka == p.Lozinka)
-                    { return RedirectToAction("Index", "Profesor", "Account"); }
+                    if (model.Email == p.Email && model.Lozinka == p.Lozinka)
+                    { return View("~/Views/Profesor/Index.cshtml", p); }
+                        //RedirectToAction("Index", "Profesor", "Account");
                 }
                 
             }

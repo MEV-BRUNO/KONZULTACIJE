@@ -330,6 +330,7 @@
     <Content Include="Views\Upit\Edit.cshtml" />
     <Content Include="Views\Upit\Index.cshtml" />
     <Content Include="Views\Student\Popis.cshtml" />
+    <Content Include="Views\Profesor\Popis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

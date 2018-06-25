@@ -1,57 +1,18 @@
-﻿@model IEnumerable<Konzultacije.Models.Profesor>
-
+﻿@model Konzultacije.Models.Profesor
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<br />
+<div class="jumbotron">
+	<h2>Dobrodošli profesore @Html.DisplayFor(Model => Model.Ime_I_Prezime)</h2>
+	<p class="lead">
+		Dobrodošli na stranicu za konzultacije. Ovjde možete odabrati sve opcije za profesore...
+		
+	</p>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Ime_I_Prezime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lozinka)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aktivacijski_Link)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aktivan)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ime_I_Prezime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lozinka)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Aktivacijski_Link)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Aktivan)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProfesorID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProfesorID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProfesorID })
-        </td>
-    </tr>
-}
+<div class="row">
 
-</table>
+</div>
