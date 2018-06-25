@@ -28,7 +28,7 @@ namespace Konzultacije.Controllers
         public ActionResult Index(Student s)
         {
 
-            return View(s);
+            return View(s);  
         }
 
         // GET: Student/Details/5
@@ -39,12 +39,17 @@ namespace Konzultacije.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Student student = db.Student.Find(id);
+            if (id == (int)Session["Student"])
+            {
+                return View(student);
+            }
             if (student == null)
             {
                 return HttpNotFound();
             }
             return View(student);
         }
+
 
         // GET: Student/Create
         public ActionResult Create()
@@ -86,6 +91,22 @@ namespace Konzultacije.Controllers
             ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv", student.StudijID);
             return View(student);
         }
+
+        //moji kontroler
+        //public ActionResult Edit(Student s)
+        //{
+        //    if (s == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Student student = db.Student.Find(s.StudentID);
+        //    if (student == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv", student.StudijID);
+        //    return View(student);
+        //}
 
         // POST: Student/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

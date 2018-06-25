@@ -11,9 +11,9 @@ namespace Konzultacije.Models
     [Table("Upit")]
     public class Upit
     {
+        [Display(Name = "ID Upita")]
         [Key]
         [Column("id_upit")]
-        [Display(Name = "ID Upita")]
         public int UpitID { get; set; }
 
         
@@ -52,8 +52,8 @@ namespace Konzultacije.Models
         public string Opis { get; set; }
 
 
-        [Column("dogovoren")]
-        [Display(Name = "Dogovoreno")]
+        [Column("odgovoren")]
+        [Display(Name = "Odgovoreno")]
         public bool Odgovoren { get; set; }
 
     }

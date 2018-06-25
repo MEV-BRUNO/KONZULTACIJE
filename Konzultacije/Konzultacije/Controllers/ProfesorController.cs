@@ -15,19 +15,36 @@ namespace Konzultacije.Controllers
         private BazaDbContext db = new BazaDbContext();
 
         // GET: Profesor
-        public ActionResult Index()
+        public ActionResult Popis()
         {
             return View(db.Profesor.ToList());
+        }
+
+        //ovo sam ja pisal
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult Index(Profesor p)
+        {
+
+            return View(p);
         }
 
         // GET: Profesor/Details/5
         public ActionResult Details(int? id)
         {
+            
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             Profesor profesor = db.Profesor.Find(id);
+            if (id == (int)Session["Profesor"])
+            {
+                return View(profesor);
+            }
             if (profesor == null)
             {
                 return HttpNotFound();
