@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h4>Izmjena podataka o profesoru @Html.DisplayFor(model => model.Ime_I_Prezime)</h4>
 
 
 @using (Html.BeginForm())
@@ -67,9 +67,11 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+	<div class="row">
+		<div class="col-sm-6">
+			@Html.ActionLink("Natrag na početnu »", "Index", "Home", "Upit", new { @class = "btn btn-info" })
+		</div>
+	</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

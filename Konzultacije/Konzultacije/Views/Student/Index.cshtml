@@ -8,8 +8,8 @@
 
 <div class="jumbotron">
 	<h2>Dobrodošli kolega @Html.DisplayFor(Model => Model.Ime_I_Prezime)</h2>
-	<p class="lead">Dobrodošli na stranicu za konzultacije. Ovjde možete odabrati sve opcije za studente kao što su stvaranje novog upita 
-	 ili upis novog termina, pregled svih termina i upita te izmjena osobnih podataka.</p>
+	<p class="lead">Dobrodošli na stranicu za konzultacije. Ovjde možete odabrati sve opcije za studente kao što su stvaranje novog upita,
+	pregled svih termina i upita te izmjena osobnih podataka.</p>
 </div>
 
 
@@ -21,10 +21,7 @@
 			Ovdje se nalazi detaljan pregled i informacije svih objavljenih termina konzultacija te mogućnost filtriranja informacija po upisanom pojmu.
 		</p>
 		<p>@Html.ActionLink("Termini konzultacija »", "Index", "Termini", "Home", new { @class = "btn btn-info" })</p>
-		<p>
-			Ovdje možete upisati novi termin konzultacije.
-		</p>
-		<p>@Html.ActionLink("Unos novog termina »", "Create", "Termini", "Student", new { @class = "btn btn-success" })</p>
+		
 	</div>
 	<div class="col-md-4">
 		<h4>Upiti profesorima</h4>
@@ -39,9 +36,9 @@
 		<h4>Moj profil</h4>
 		<p>Ovjde možete vidjeti detalje vašeg profila</p>
 		<p></p>
-		<p>@Html.ActionLink("Moji podaci", "Details", "Student", "Student",  new { @class= "btn btn-info"})</p>
+		<p>@Html.ActionLink("Moji podaci", "Details", "Student", new { id = Model.StudentID},  new { @class= "btn btn-info"})</p>
 		<p>Ovdje možete izmjeniti svoje osobne podatke.</p>
-		<p>@Html.ActionLink("Izmjena podataka »", "Edit", "Student", "Student", new { @class = "btn btn-warning" })</p>
+		<p>@Html.ActionLink("Izmjena podataka »", "Edit", "Student", new { id = Model.StudentID}, new { @class = "btn btn-warning" })</p>
 
 	</div>
 

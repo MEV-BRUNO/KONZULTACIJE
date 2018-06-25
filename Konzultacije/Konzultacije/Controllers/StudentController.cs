@@ -39,6 +39,10 @@ namespace Konzultacije.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Student student = db.Student.Find(id);
+            if (id == (int)Session["Student"])
+            {
+                return View(student);
+            }
             if (student == null)
             {
                 return HttpNotFound();
@@ -46,19 +50,6 @@ namespace Konzultacije.Controllers
             return View(student);
         }
 
-        //moj kontroler
-        public ActionResult Details(Student s)
-        {
-            if (s == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            if (s == null)
-            {
-                return HttpNotFound();
-            }
-            return View(s);
-        }
 
         // GET: Student/Create
         public ActionResult Create()

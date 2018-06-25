@@ -33,11 +33,18 @@ namespace Konzultacije.Controllers
         // GET: Profesor/Details/5
         public ActionResult Details(int? id)
         {
+            
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             Profesor profesor = db.Profesor.Find(id);
+            if (id == (int)Session["Profesor"])
+            {
+                return View(profesor);
+            }
             if (profesor == null)
             {
                 return HttpNotFound();

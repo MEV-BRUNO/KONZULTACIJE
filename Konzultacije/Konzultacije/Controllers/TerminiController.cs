@@ -39,6 +39,11 @@ namespace Konzultacije.Controllers
         // GET: Termini/Create
         public ActionResult Create()
         {
+            if(Session["Student"] == null && Session["Profesor"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+                //return View("~/Views/Home/Index.cshtml");
+            }
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv");
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             return View();

@@ -28,6 +28,7 @@ namespace Konzultacije.Controllers
             else if (Session["Profesor"] != null)
             {
                 return View("~/Views/Profesor/Index.cshtml", p);
+                //return RedirectToAction("Index", "ProfesorController", p);
             }
             else
             {

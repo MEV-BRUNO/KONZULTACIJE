@@ -69,8 +69,9 @@ namespace Konzultacije.Controllers
                     {
                         Session["Profesor"] = p.ProfesorID;
                         return View("~/Views/Profesor/Index.cshtml", p);
+                        //return RedirectToAction("~/Controllers/ProfesorController/Index", p);
                     }
-                        //RedirectToAction("Index", "Profesor", "Account");
+                        
                 }
                 
             }
@@ -114,6 +115,28 @@ namespace Konzultacije.Controllers
             return View();
         }
 
+
+        [AllowAnonymous]
+        public ActionResult LogOut()
+        {
+            if (Session["Student"]!=null)
+            {
+                Session.Clear();
+                Session.Abandon();
+                Session.RemoveAll();
+                return RedirectToAction("Index", "Home");
+            }else if(Session["Profesor"]!=null)
+            {
+                Session.Clear();
+                Session.Abandon();
+                Session.RemoveAll();
+                return RedirectToAction("Index", "Home");
+            }else //if(Session["Student"] == null && Session["Profesor"] == null)
+            {
+                return View();
+            }
+
+        }
 
         private void AddErrors(IdentityResult result)
         {

@@ -60,7 +60,15 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+	<div class="col-sm-6">
+		@Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }, new { @class= "btn btn-success"}) 
+	</div>
+		<br/> 
+	<div class="col-sm-6">
+		@Html.ActionLink("Natrag na početnu »", "Index", "Home", "Upit", new { @class = "btn btn-info" })
+	</div>
+
+
+

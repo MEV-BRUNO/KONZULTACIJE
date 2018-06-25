@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Log out";
+}
+<div class="jumbotron">
+	<h4>Nemozete se odlogirati ako se niste ni prijavili ili registrirali, a upravo to mozete napraviti upravo ovdje.</h4>
+
+	<div class="container">
+		<div class="row col-12">
+
+
+			<p>@Html.ActionLink("Prijava", "Login", "Account", "Home", new { @class = "btn btn-success" })</p>
+			&emsp;
+			<p>@Html.ActionLink("Registracija", "Register", "Account", "Home", new { @class = "btn btn-warning" })</p>
+
+		</div>
+	</div>
+
+
+</div>
+
