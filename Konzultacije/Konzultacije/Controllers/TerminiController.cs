@@ -60,7 +60,7 @@ namespace Konzultacije.Controllers
             {
                 db.Termini.Add(termini);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
@@ -96,7 +96,7 @@ namespace Konzultacije.Controllers
             {
                 db.Entry(termini).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", termini.ProfesorID);
@@ -126,7 +126,7 @@ namespace Konzultacije.Controllers
             Termini termini = db.Termini.Find(id);
             db.Termini.Remove(termini);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

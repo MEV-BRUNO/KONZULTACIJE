@@ -69,7 +69,8 @@ namespace Konzultacije.Controllers
             {
                 db.Profesor.Add(profesor);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Session["Profesor"] = profesor.ProfesorID;
+                return RedirectToAction("Index", "Home" );
             }
 
             return View(profesor);
@@ -101,7 +102,7 @@ namespace Konzultacije.Controllers
             {
                 db.Entry(profesor).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(profesor);
         }
@@ -129,7 +130,7 @@ namespace Konzultacije.Controllers
             Profesor profesor = db.Profesor.Find(id);
             db.Profesor.Remove(profesor);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)
