@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<Konzultacije.Models.Upit>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Popis upita";
 }
 
-<h2>Index</h2>
+<br/>
+<h2>Popis vaših dosadašnjih upita</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -61,3 +60,24 @@
 }
 
 </table>
+
+<br/> <hr/>
+
+<div class="row">
+	  	<div class="col-md-6">
+	  		<p>Možete i ovdje napraviti novi upit</p>
+	  		<p>
+	  			@Html.ActionLink("Unos novog upita »", "Create", "Upit", new { @class = "btn btn-info" })
+	  </p>
+	  </div>
+
+
+
+	  <div class="col-md-6">
+	  	<p>I možete se vratiti na početnu stranicu</p>
+	  	<p>
+	  		@Html.ActionLink("Natrag na početnu »", "Index", "Home", "Upit", new { @class = "btn btn-info" })
+	  </p>
+	  </div>
+
+</div>
