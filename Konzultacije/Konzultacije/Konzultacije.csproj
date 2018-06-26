@@ -200,6 +200,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KolegijController.cs" />
     <Compile Include="Controllers\ProfesorController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TerminiController.cs" />
@@ -332,6 +333,18 @@
     <Content Include="Views\Student\Popis.cshtml" />
     <Content Include="Views\Profesor\Popis.cshtml" />
     <Content Include="Views\Account\LogOut.cshtml" />
+    <Content Include="Views\Kolegijs\Create.cshtml" />
+    <Content Include="Views\Kolegijs\Delete.cshtml" />
+    <Content Include="Views\Kolegijs\Details.cshtml" />
+    <Content Include="Views\Kolegijs\Edit.cshtml" />
+    <Content Include="Views\Kolegijs\Index.cshtml" />
+    <Content Include="Views\Kolegij\Create.cshtml" />
+    <Content Include="Views\Kolegij\Delete.cshtml" />
+    <Content Include="Views\Kolegij\Details.cshtml" />
+    <Content Include="Views\Kolegij\Edit.cshtml" />
+    <Content Include="Views\Kolegij\Index.cshtml" />
+    <Content Include="Views\Kolegij\PopisOdabranih.cshtml" />
+    <Content Include="Views\Kolegij\Popis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

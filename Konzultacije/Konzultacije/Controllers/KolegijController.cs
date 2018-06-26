@@ -10,118 +10,122 @@ using Konzultacije.Models;
 
 namespace Konzultacije.Controllers
 {
-    public class UpitController : Controller
+    public class KolegijController : Controller
     {
         private BazaDbContext db = new BazaDbContext();
 
-        // GET: Upit
+        // GET: Kolegij
         public ActionResult Index()
         {
-            var upit = db.Upit.Include(u => u.Profesor).Include(u => u.Student);
-            return View(upit.ToList());
+            return View();
         }
 
-        // GET: Upit/Details/5
+        //moji kontroleri za ispis kolegija
+        public ActionResult Popis()
+        {
+            return View(db.Kolegij.ToList());
+        }
+
+
+        public ActionResult PopisOdabranih()
+        {          
+            
+            return View(db.Kolegij.ToList().Where(x => x.Odabran == true).ToList());
+        }
+
+        // GET: Kolegij/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Upit upit = db.Upit.Find(id);
-            if (upit == null)
+            Kolegij kolegij = db.Kolegij.Find(id);
+            if (kolegij == null)
             {
                 return HttpNotFound();
             }
-            return View(upit);
+            return View(kolegij);
         }
 
-        // GET: Upit/Create
+        // GET: Kolegij/Create
         public ActionResult Create()
         {
-            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
-            ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime");
             return View();
         }
 
-        // POST: Upit/Create
+        // POST: Kolegij/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UpitID,StudentID,ProfesorID,Datum,Naslov,Opis,Odgovoren")] Upit upit)
+        public ActionResult Create([Bind(Include = "KolegijID,Naziv,Odabran")] Kolegij kolegij)
         {
             if (ModelState.IsValid)
             {
-                db.Upit.Add(upit);
+                db.Kolegij.Add(kolegij);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
 
-            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
-            ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
-            return View(upit);
+            return View(kolegij);
         }
 
-        // GET: Upit/Edit/5
+        // GET: Kolegij/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Upit upit = db.Upit.Find(id);
-            if (upit == null)
+            Kolegij kolegij = db.Kolegij.Find(id);
+            if (kolegij == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
-            ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
-            return View(upit);
+            return View(kolegij);
         }
 
-        // POST: Upit/Edit/5
+        // POST: Kolegij/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UpitID,StudentID,ProfesorID,Datum,Naslov,Opis,Odgovoren")] Upit upit)
+        public ActionResult Edit([Bind(Include = "KolegijID,Naziv,Odabran")] Kolegij kolegij)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(upit).State = EntityState.Modified;
+                db.Entry(kolegij).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
-            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
-            ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
-            return View(upit);
+            return View(kolegij);
         }
 
-        // GET: Upit/Delete/5
+        // GET: Kolegij/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Upit upit = db.Upit.Find(id);
-            if (upit == null)
+            Kolegij kolegij = db.Kolegij.Find(id);
+            if (kolegij == null)
             {
                 return HttpNotFound();
             }
-            return View(upit);
+            return View(kolegij);
         }
 
-        // POST: Upit/Delete/5
+        // POST: Kolegij/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Upit upit = db.Upit.Find(id);
-            db.Upit.Remove(upit);
+            Kolegij kolegij = db.Kolegij.Find(id);
+            db.Kolegij.Remove(kolegij);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

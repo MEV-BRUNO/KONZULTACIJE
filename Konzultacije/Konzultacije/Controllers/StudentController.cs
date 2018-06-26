@@ -69,7 +69,8 @@ namespace Konzultacije.Controllers
             {
                 db.Student.Add(student);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Session["Student"] = student.StudentID;
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv", student.StudijID);
@@ -119,7 +120,7 @@ namespace Konzultacije.Controllers
             {
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             ViewBag.StudijID = new SelectList(db.Studij, "StudijID", "Naziv", student.StudijID);
             return View(student);
@@ -148,7 +149,7 @@ namespace Konzultacije.Controllers
             Student student = db.Student.Find(id);
             db.Student.Remove(student);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

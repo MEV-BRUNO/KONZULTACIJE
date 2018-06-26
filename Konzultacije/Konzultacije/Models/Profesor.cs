@@ -34,7 +34,7 @@ namespace Konzultacije.Models
         [Column("lozinka")]
         [Display(Name ="Lozinka")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak.")]
-        [StringLength(25, ErrorMessage ="{0} ne moze imati manje od {2} niti vise od {1} slova.", MinimumLength = 5)]
+        [StringLength(25, ErrorMessage ="{0} ne moze imati manje od {2} niti vise od {1} slova.", MinimumLength = 7)]
         [DataType(DataType.Password)]
         public string Lozinka { get; set; }
 

@@ -1,10 +1,10 @@
 ﻿@model Konzultacije.Models.Upit
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Izmjena upita";
 }
 
-<h2>Edit</h2>
+<h3>@ViewBag.Title</h3>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Upit</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.UpitID)
@@ -69,15 +69,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Spremi promjene" class="btn btn-outline-warning" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+	<div>
+		@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
+	</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

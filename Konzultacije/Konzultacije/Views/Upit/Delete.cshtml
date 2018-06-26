@@ -1,12 +1,12 @@
 ﻿@model Konzultacije.Models.Upit
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Brisanje upita";
 }
 
-<h2>Delete</h2>
+<h3>@ViewBag.Title</h3>
 
-<h3>Are you sure you want to delete this?</h3>
+<h4>Are you sure you want to delete this?</h4>
 <div>
     <h4>Upit</h4>
     <hr />
@@ -64,9 +64,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+	<div class="form-actions no-color">
+		<input type="submit" value="Obriši upit" class="btn btn-outline-danger" /> 
+		@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
+	</div>
     }
 </div>
