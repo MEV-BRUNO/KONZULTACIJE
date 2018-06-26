@@ -20,7 +20,7 @@ namespace Konzultacije.Models
         // Azuriranje
         public void AzuriranjeStudenta(Student s)
         {
-            int index = studenti.FindIndex(x => x.Id_student == s.Id_student);
+            int index = studenti.FindIndex(x => x.StudentID == s.StudentID);
             studenti[index] = s;
 
         }
@@ -28,15 +28,15 @@ namespace Konzultacije.Models
         // Upis
         public void UpisStudenta(Student s)
         {
-            int noviId = studenti.Max(x => x.Id_student) + 1;
-            s.Id_student = noviId;
+            int noviId = studenti.Max(x => x.StudentID) + 1;
+            s.StudentID = noviId;
             studenti.Add(s);
         }
 
         //Brisanje
         public void ObrisiStudenta(Student s)
         {
-            int index = studenti.FindIndex(x => x.Id_student == s.Id_student);
+            int index = studenti.FindIndex(x => x.StudentID == s.StudentID);
             studenti.RemoveAt(index);
         }
 

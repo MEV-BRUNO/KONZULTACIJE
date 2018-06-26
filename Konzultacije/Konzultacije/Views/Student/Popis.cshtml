@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Konzultacije.Models.Student>
+@{
+    ViewBag.Title = "Popis";
+}
+
+<h2>Popis studenata u bazi</h2>
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Studij.Naziv)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Ime_I_Prezime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Email)
+		</th>
+		@*<th>
+			@Html.DisplayNameFor(model => model.Lozinka)
+		</th>*@
+		<th>
+			@Html.DisplayNameFor(model => model.Aktivacijski_link)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Aktivan)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Studij.Naziv)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Ime_I_Prezime)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Email)
+			</td>
+			@*<td>
+				@Html.DisplayFor(modelItem => item.Lozinka)
+			</td>*@
+			<td>
+				@Html.DisplayFor(modelItem => item.Aktivacijski_link)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Aktivan)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+				@Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+			</td>
+		</tr>
+	}
+
+</table>

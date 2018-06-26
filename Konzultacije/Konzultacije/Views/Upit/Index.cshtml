@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Konzultacije.Models.Upit>
+
+@{
+    ViewBag.Title = "Popis upita";
+}
+
+<br/>
+<h2>Popis vaših dosadašnjih upita</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.Ime_I_Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naslov)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Odgovoren)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profesor.Ime_I_Prezime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.Ime_I_Prezime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naslov)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Odgovoren)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UpitID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UpitID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UpitID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<br/> <hr/>
+
+<div class="row">
+	  	<div class="col-md-6">
+	  		<p>Možete i ovdje napraviti novi upit</p>
+	  		<p>
+	  			@Html.ActionLink("Unos novog upita »", "Create", "Upit", new { @class = "btn btn-info" })
+	  </p>
+	  </div>
+
+
+
+	  <div class="col-md-6">
+	  	<p>I možete se vratiti na početnu stranicu</p>
+	  	<p>
+	  		@Html.ActionLink("Natrag na početnu »", "Index", "Home", "Upit", new { @class = "btn btn-info" })
+	  </p>
+	  </div>
+
+</div>

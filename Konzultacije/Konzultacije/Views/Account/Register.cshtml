@@ -1,46 +1,34 @@
 ﻿@using Konzultacije.Models
-@model Konzultacije.Models.RegisterViewModel
+
 @{
 	ViewBag.Title = "Konzultacije";
 }
 
-<h2>@ViewBag.Title</h2>
+<br />
 &emsp;&emsp;
 
 <div>
 	@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 	{
 		@Html.AntiForgeryToken()
-		<div class="bg-primary rounded form-group text-white" style="height: 60px; padding:15px; max-width:280px; min-width:235px;"><p style="text-align:center;">Ispunite podatke za registraciju</p> </div>
-
-		@Html.ValidationSummary()
-		<div class="form-group">
-			@Html.TextBoxFor(Model => Model.Ime, new { @Value = "Ime", @class = "form-control", @onclick = "this.value =''" })
-		</div>
-		<div class="form-group">
-			@Html.TextBoxFor(Model => Model.Prezime, new { @Value = "Prezime", @class = "form-control", @onclick = "this.value =''" })
-		</div>
-		<div class="form-group">
-			@Html.TextBoxFor(Model => Model.UserName, new { @Value = "Korisničko Ime", @class = "form-control", @onclick = "this.value =''" })
-		</div>
-		<div class="form-group">
-			@Html.TextBoxFor(Model => Model.Email, new { @Value = "Vašu E-mail adresu", @class = "form-control", @onclick = "this.value =''" })
-		</div>
-		<div class="form-group">
-			@Html.PasswordFor(Model => Model.Password, new { @Value = "Lozinka", @class = "form-control", @onclick = "this.value =''" })
-
-		</div>
-		<div class="form-group">
-			@Html.PasswordFor(Model => Model.ConfirmPassword, new { @Value = "Ponovi lozinku", @class = "form-control", @onclick = "this.value =''" })
+	
+		<div class="bg-primary rounded form-group text-white" style="height: 60px; padding:15px; max-width:400px; min-width:240px;">
+			<p style="text-align:center;">Odaberite jednu od opcija registracije</p>
 		</div>
 
+		
+		<div class="container">
+			<div class="row col-12">
 
-		<div class="form-group">
-			<div>
-				<input type="submit" value="Registracija" class="btn btn-success" />
+				<p>@Html.ActionLink("Registracija Profesora", "Create", "Profesor","Account", new { @class = "btn btn-danger" })</p>
+				&emsp;
+				<p>@Html.ActionLink("Registracija Studenta", "Create", "Student", "Account", new { @class = "btn btn-warning" })</p>
+
 			</div>
 		</div>
-
+	
+		
+		
 		<div class="moje">
 			<div>
 				@Html.ActionLink("Prijava", "Login", "Account", new { @Style = "color: black;", @class = "mojilink;" })
@@ -52,7 +40,7 @@
 		</div>
 	}
 
-	</div>
+</div>
 
 
 	@section Scripts {

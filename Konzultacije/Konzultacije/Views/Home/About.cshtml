@@ -1,9 +1,26 @@
 ﻿@{
-	ViewBag.Title = "About";
+	ViewBag.Title = "O projektu";
 }
+<br/>
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<br/>
 
-<p>Use this area to provide additional information.</p>
-@Html.ActionLink("Prijava", "Login", "Account")
-<!--@Html.ActionLink("Popis", "", "")-->
+<div>
+	<div class="col-md-12">
+		<h5>Informacije o projektu</h5>
+		<p>Ovdje neka kolega Vidović upiše svoj tekst.</p>
+	</div>
+
+	<div class="col-md-12">
+		<h5>Opis projekta</h5>
+		<p>Ovdje neka kolega Vidović upiše svoj tekst.</p>
+	</div>
+
+	<div class="col-md-12">
+		<h5>Cilj projekta</h5>
+		<p>Ovdje neka kolega Vidović upiše svoj tekst.</p>
+	</div>
+</div>
+
+
+@Html.ActionLink("Kontakt developera ove aplikacije", "Contact", "Home")
