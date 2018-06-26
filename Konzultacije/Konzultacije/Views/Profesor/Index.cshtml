@@ -1,0 +1,47 @@
+﻿@model Konzultacije.Models.Profesor
+@{
+	ViewBag.Title = "Pocetna stranica za profesore";
+}
+
+<br />
+<div class="jumbotron">
+	<h2>Dobrodošli profesore @Html.DisplayFor(Model => Model.Ime_I_Prezime)</h2>
+	<p class="lead">
+		Dobrodošli na stranicu za konzultacije. Ovjde možete odabrati sve opcije za profesore kao što su upis novog termina, 
+		pregled svih termina i upita te izmjena osobnih podataka.
+	</p>
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-4">
+		<h4>Termini konzultacija</h4>
+		<p>
+			Ovdje se nalazi detaljan pregled i informacije svih objavljenih termina konzultacija te mogućnost filtriranja informacija po upisanom pojmu.
+		</p>
+		<p>@Html.ActionLink("Termini konzultacija »", "Index", "Termini", "Home", new { @class = "btn btn-danger" })</p>
+		<p>
+			Ovdje možete upisati novi termin konzultacije.
+		</p>
+		<p>@Html.ActionLink("Unos nove konzultacije »", "Create", "Termini", "Profesor", new { @class = "btn btn-dark" })</p>
+	</div>
+	<div class="col-md-4">
+		<h4>Upiti od studenata</h4>
+		<p>Ovdje možete vidjeti sve upite koje su vam poslali studenti.</p>
+		<p>@Html.ActionLink("Popis svih upita »", "Index", "Upit", "Profesor", new { @class = "btn btn-danger" })</p>
+
+		
+	</div>
+
+	<div class="col-md-4">
+		<h4>Moj profil</h4>
+		<p>Ovjde možete vidjeti detalje vašeg profila</p>
+		<p></p>
+		<p>@Html.ActionLink("Moji podaci", "Details", "Profesor", new { id = Model.ProfesorID },new { @class = "btn btn-primary" })</p>
+		<p>Ovdje možete izmjeniti svoje osobne podatke.</p>
+		<p>@Html.ActionLink("Izmjena podataka »", "Edit", "Profesor",  new { id = Model.ProfesorID },new{ @class = "btn btn-warning" })</p>
+
+	</div>
+
+</div>
