@@ -31,6 +31,14 @@
 		<p>Ovdje možete vidjeti sve upite koje su vam poslali studenti.</p>
 		<p>@Html.ActionLink("Popis svih upita »", "Index", "Upit", "Profesor", new { @class = "btn btn-danger" })</p>
 
+		<p>Ovdje možete pogledati popis svih kolegija</p>
+		<p>@Html.ActionLink("Popis odabranih kolegija »", "PopisOdabranih", "Kolegij", null, new { @class = "btn btn-dark"})</p>
+
+		<p>Ovdje možete vidjeti popis svih kolegija</p>
+		<p>@Html.ActionLink("Popis svih kolegija »", "Popis", "Kolegij", null, new { @class = "btn btn-danger"})</p>
+
+
+		<p>@Html.ActionLink("Popis", "Popis", "Profesor",null , new { @class="btn btn-secondary"})</p>
 		
 	</div>
 
@@ -38,7 +46,7 @@
 		<h4>Moj profil</h4>
 		<p>Ovjde možete vidjeti detalje vašeg profila</p>
 		<p></p>
-		<p>@Html.ActionLink("Moji podaci", "Details", "Profesor", new { id = Model.ProfesorID },new { @class = "btn btn-primary" })</p>
+		<p>@Html.ActionLink("Moji podaci »", "Details", "Profesor", new { id = Model.ProfesorID },new { @class = "btn btn-primary" })</p>
 		<p>Ovdje možete izmjeniti svoje osobne podatke.</p>
 		<p>@Html.ActionLink("Izmjena podataka »", "Edit", "Profesor",  new { id = Model.ProfesorID },new{ @class = "btn btn-warning" })</p>
 

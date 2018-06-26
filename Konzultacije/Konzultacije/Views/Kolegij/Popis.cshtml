@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Konzultacije.Models.Kolegij>
+@{
+	ViewBag.Title = "Popis svih kolegija";
+}
+
+<h3>@ViewBag.Title</h3>
+
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Naziv)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Odabran)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Naziv)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Odabran)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.KolegijID }) |
+				@Html.ActionLink("Details", "Details", new { id = item.KolegijID }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.KolegijID })
+			</td>
+		</tr>
+	}
+
+</table>
+
+

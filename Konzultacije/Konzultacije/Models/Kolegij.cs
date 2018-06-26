@@ -22,6 +22,10 @@ namespace Konzultacije.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak.")]
         public string Naziv { get; set; }
 
+        [Column("odabran")]
+        [Display(Name = "Odabran")]
+        public bool Odabran { get; set; }
+
         public virtual ICollection<Kolegij_Profesor> Kolegij_Profesors { get; set; }
         public virtual ICollection<Termini> Terminis { get; set; }
         
