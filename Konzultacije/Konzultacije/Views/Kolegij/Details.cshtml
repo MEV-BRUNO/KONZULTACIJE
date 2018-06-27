@@ -30,5 +30,8 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.KolegijID }) |
-    @Html.ActionLink("Back to List", "Index")
+   
 </p>
+<div>
+	@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
+</div>

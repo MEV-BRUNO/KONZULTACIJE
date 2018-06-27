@@ -23,8 +23,23 @@ namespace Konzultacije.Controllers
         //moji kontroleri za ispis kolegija
         public ActionResult Popis()
         {
-            return View(db.Kolegij.ToList());
+            return View(db.Kolegij.ToList().Where(x => x.Odabran == false).ToList());
         }
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Popis(List<Kolegij> lista)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
+        //        db.Entry(lista).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("PopisOdabranih", "Kolegij");
+        //    }
+        //    return View(db.Kolegij.ToList().Where(x => x.Odabran == false).ToList());
+
+        //}
 
 
         public ActionResult PopisOdabranih()
@@ -65,7 +80,7 @@ namespace Konzultacije.Controllers
             {
                 db.Kolegij.Add(kolegij);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(kolegij);
@@ -97,7 +112,7 @@ namespace Konzultacije.Controllers
             {
                 db.Entry(kolegij).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             return View(kolegij);
         }
@@ -125,7 +140,7 @@ namespace Konzultacije.Controllers
             Kolegij kolegij = db.Kolegij.Find(id);
             db.Kolegij.Remove(kolegij);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)
