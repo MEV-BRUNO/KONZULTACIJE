@@ -201,6 +201,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KolegijController.cs" />
+    <Compile Include="Controllers\Kolegij_ProfesorController.cs" />
     <Compile Include="Controllers\ProfesorController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TerminiController.cs" />
@@ -333,11 +334,6 @@
     <Content Include="Views\Student\Popis.cshtml" />
     <Content Include="Views\Profesor\Popis.cshtml" />
     <Content Include="Views\Account\LogOut.cshtml" />
-    <Content Include="Views\Kolegijs\Create.cshtml" />
-    <Content Include="Views\Kolegijs\Delete.cshtml" />
-    <Content Include="Views\Kolegijs\Details.cshtml" />
-    <Content Include="Views\Kolegijs\Edit.cshtml" />
-    <Content Include="Views\Kolegijs\Index.cshtml" />
     <Content Include="Views\Kolegij\Create.cshtml" />
     <Content Include="Views\Kolegij\Delete.cshtml" />
     <Content Include="Views\Kolegij\Details.cshtml" />
@@ -345,6 +341,11 @@
     <Content Include="Views\Kolegij\Index.cshtml" />
     <Content Include="Views\Kolegij\PopisOdabranih.cshtml" />
     <Content Include="Views\Kolegij\Popis.cshtml" />
+    <Content Include="Views\Kolegij_Profesor\Create.cshtml" />
+    <Content Include="Views\Kolegij_Profesor\Delete.cshtml" />
+    <Content Include="Views\Kolegij_Profesor\Details.cshtml" />
+    <Content Include="Views\Kolegij_Profesor\Edit.cshtml" />
+    <Content Include="Views\Kolegij_Profesor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

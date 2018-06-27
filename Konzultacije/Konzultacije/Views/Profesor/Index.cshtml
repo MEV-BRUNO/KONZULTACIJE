@@ -15,7 +15,7 @@
 
 
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-6">
 		<h4>Termini konzultacija</h4>
 		<p>
 			Ovdje se nalazi detaljan pregled i informacije svih objavljenih termina konzultacija te mogućnost filtriranja informacija po upisanom pojmu.
@@ -26,30 +26,37 @@
 		</p>
 		<p>@Html.ActionLink("Unos nove konzultacije »", "Create", "Termini", "Profesor", new { @class = "btn btn-dark" })</p>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-6">
 		<h4>Upiti od studenata</h4>
 		<p>Ovdje možete vidjeti sve upite koje su vam poslali studenti.</p>
 		<p>@Html.ActionLink("Popis svih upita »", "Index", "Upit", "Profesor", new { @class = "btn btn-danger" })</p>
 
-		<p>Ovdje možete pogledati popis svih kolegija</p>
-		<p>@Html.ActionLink("Popis odabranih kolegija »", "PopisOdabranih", "Kolegij", null, new { @class = "btn btn-dark"})</p>
-
 		<p>Ovdje možete vidjeti popis svih kolegija</p>
-		<p>@Html.ActionLink("Popis svih kolegija »", "Popis", "Kolegij", null, new { @class = "btn btn-danger"})</p>
+		<p>@Html.ActionLink("Popis svih kolegija »", "Popis", "Kolegij", null, new { @class = "btn btn-dark" })</p>
 
+		<p>@Html.ActionLink("Popis", "Popis", "Profesor", null, new { @class = "btn btn-secondary" })</p>
 
-		<p>@Html.ActionLink("Popis", "Popis", "Profesor",null , new { @class="btn btn-secondary"})</p>
-		
+	</div>	
+</div>
+
+<hr />
+<div class="row">
+	<div class="col-md-6">
+		<h4>Kolegiji</h4>
+		<p>Ovdje možete pogledati popis odabranih kolegija</p>
+		<p>@Html.ActionLink("Popis odabranih kolegija »", "Index", "Kolegij_profesor", new {ime = Model.Ime_I_Prezime }, new { @class = "btn btn-danger" })</p>
+
+		<p>Ovdje možete odabrati kolegije koje predajete</p>
+		<p>@Html.ActionLink("Odabir kolegija »", "Create", "Kolegij_profesor", null, new { @class = "btn btn-dark"})</p>
+
 	</div>
-
-	<div class="col-md-4">
+	<div class="col-md-6">
 		<h4>Moj profil</h4>
 		<p>Ovjde možete vidjeti detalje vašeg profila</p>
 		<p></p>
-		<p>@Html.ActionLink("Moji podaci »", "Details", "Profesor", new { id = Model.ProfesorID },new { @class = "btn btn-primary" })</p>
+		<p>@Html.ActionLink("Moji podaci »", "Details", "Profesor", new { id = Model.ProfesorID }, new { @class = "btn btn-primary" })</p>
 		<p>Ovdje možete izmjeniti svoje osobne podatke.</p>
-		<p>@Html.ActionLink("Izmjena podataka »", "Edit", "Profesor",  new { id = Model.ProfesorID },new{ @class = "btn btn-warning" })</p>
+		<p>@Html.ActionLink("Izmjena podataka »", "Edit", "Profesor", new { id = Model.ProfesorID }, new { @class = "btn btn-warning" })</p>
 
 	</div>
-
 </div>
