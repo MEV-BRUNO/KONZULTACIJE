@@ -33,13 +33,15 @@ CREATE TABLE IF NOT EXISTS Student(
 	aktivan BOOL
 );
 
+
 CREATE TABLE IF NOT EXISTS Upit(
 	id_upit INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	id_student INT,
 	FOREIGN KEY(id_student) REFERENCES Student(id_student),
 	id_profesor INT,
 	FOREIGN KEY(id_profesor) REFERENCES Profesor(id_profesor),
-	datum DATETIME NOT NULL,
+	id_termina INT,
+	FOREIGN KEY(id_termina) REFERENCES Termini(id_termina),
 	naslov VARCHAR(225),
 	opis VARCHAR(225),
 	odgovoren BOOL

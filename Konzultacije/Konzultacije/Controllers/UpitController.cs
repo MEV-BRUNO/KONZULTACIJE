@@ -53,6 +53,7 @@ namespace Konzultacije.Controllers
             int a = (int)Session["Student"];
             Student stu = db.Student.Find(a);
             ViewBag.Student = stu.Ime_I_Prezime;
+            ViewBag.TerminiID = new SelectList(db.Termini, "TerminiID", "Dan_Tjedan");
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime");
             return View();
@@ -75,6 +76,7 @@ namespace Konzultacije.Controllers
             int a = (int)Session["Student"];
             Student stu = db.Student.Find(a);
             ViewBag.Student = stu.Ime_I_Prezime;
+            ViewBag.TerminiID = new SelectList(db.Termini, "TerminiID", "Dan_Tjedan", upit.TerminID);
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
             return View(upit);
@@ -92,6 +94,7 @@ namespace Konzultacije.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.TerminiID = new SelectList(db.Termini, "TerminiID", "Dan_Tjedan", upit.TerminID);
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
             return View(upit);
@@ -110,6 +113,7 @@ namespace Konzultacije.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
+            ViewBag.TerminiID = new SelectList(db.Termini, "TerminiID", "Dan_Tjedan", upit.TerminID);
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
             return View(upit);

@@ -52,5 +52,7 @@ namespace Konzultacije.Models
         [Required(ErrorMessage = "Polje {0} je nepopunjeno")]
         public DateTime Vrijeme_Do { get; set; }
 
+        public IEnumerable<Upit> Upits { get; set; }
+
     }
 }
