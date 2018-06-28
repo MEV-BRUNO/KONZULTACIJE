@@ -40,8 +40,7 @@ CREATE TABLE IF NOT EXISTS Upit(
 	FOREIGN KEY(id_student) REFERENCES Student(id_student),
 	id_profesor INT,
 	FOREIGN KEY(id_profesor) REFERENCES Profesor(id_profesor),
-	id_termina INT,
-	FOREIGN KEY(id_termina) REFERENCES Termini(id_termina),
+	datum DATETIME NOT NULL,
 	naslov VARCHAR(225),
 	opis VARCHAR(225),
 	odgovoren BOOL
@@ -59,7 +58,7 @@ CREATE TABLE IF NOT EXISTS Termini(
 	vrijeme_do TIME NOT NULL
 );
 
-DROP TABLE kolegij_profesor
+
 CREATE TABLE IF NOT EXISTS Kolegij_profesor(
 	id_kolegij_profesor INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
 	id_profesor INT,
