@@ -57,7 +57,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Stvori konzultaciju" class="btn btn-outline-success" />
             </div>
         </div>
     </div>
@@ -65,11 +65,11 @@
 
 	<div class="col-md-6">
 		<div>
-			@Html.ActionLink("Natrag na listu »", "Index", "Termini", new { @class = "btn btn-info" })
+			@Html.ActionLink("Natrag na listu »", "Index", "Termini", new { id = (int)Session["Profesor"]}, new { @class = "btn btn-info" })
 		</div>
 		<br />
 		<div>
-			@Html.ActionLink("Natrag na početnu »", "Index", "Home", "Upit", new { @class = "btn btn-info" })
+			@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
 		</div>
 </div>
 

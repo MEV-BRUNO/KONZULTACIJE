@@ -15,9 +15,20 @@ namespace Konzultacije.Controllers
         private BazaDbContext db = new BazaDbContext();
 
         // GET: Upit
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var upit = db.Upit.Include(u => u.Profesor).Include(u => u.Student);
+            if (Session["Profesor"]!=null)
+            { 
+            Profesor trenutanprof = db.Profesor.Find(id);
+            return View(upit.ToList().Where(x => x.ProfesorID == trenutanprof.ProfesorID).ToList());
+            }
+
+            if (Session["Student"] != null)
+            {
+                Student trenutanstu = db.Student.Find(id);
+                return View(upit.ToList().Where(x => x.StudentID == trenutanstu.StudentID).ToList());
+            }
             return View(upit.ToList());
         }
 
@@ -55,7 +66,7 @@ namespace Konzultacije.Controllers
             {
                 db.Upit.Add(upit);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
@@ -91,7 +102,7 @@ namespace Konzultacije.Controllers
             {
                 db.Entry(upit).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
@@ -121,7 +132,7 @@ namespace Konzultacije.Controllers
             Upit upit = db.Upit.Find(id);
             db.Upit.Remove(upit);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

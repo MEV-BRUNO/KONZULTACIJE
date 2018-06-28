@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Konzultacije.Models.Kolegij_Profesor>
+
+@{
+    ViewBag.Title = "Popis odabranih kolegija";
+}
+<br />
+<h3>@ViewBag.Title</h3>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kolegij.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kolegij.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profesor.Ime_I_Prezime)
+        </td>
+        <td>
+           
+            @Html.ActionLink("Odznacite kolegij", "Delete", new { id=item.Kolegij_ProfesorID })
+        </td>
+    </tr>
+}
+
+</table>
+<div class="row">
+	<div class="col-sm-6">
+		@Html.ActionLink("Odabrati novi kolegij »", "Create", "Kolegij_profesor", null, new { @class = "btn btn-info" })
+	</div>
+	<div class="col-sm-6">
+		@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
+	</div>
+</div>

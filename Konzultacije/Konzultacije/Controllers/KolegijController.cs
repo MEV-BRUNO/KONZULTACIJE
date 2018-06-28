@@ -10,121 +10,135 @@ using Konzultacije.Models;
 
 namespace Konzultacije.Controllers
 {
-    public class TerminiController : Controller
+    public class KolegijController : Controller
     {
         private BazaDbContext db = new BazaDbContext();
 
-        // GET: Termini
+        // GET: Kolegij
         public ActionResult Index()
         {
-            var termini = db.Termini.Include(t => t.Kolegij).Include(t => t.Profesor);
-            return View(termini.ToList());
+            return View();
         }
 
-        // GET: Termini/Details/5
+        //moji kontroleri za ispis kolegija
+        public ActionResult Popis()
+        {
+            return View(db.Kolegij.ToList().Where(x => x.Odabran == false).ToList());
+        }
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Popis(List<Kolegij> lista)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
+        //        db.Entry(lista).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("PopisOdabranih", "Kolegij");
+        //    }
+        //    return View(db.Kolegij.ToList().Where(x => x.Odabran == false).ToList());
+
+        //}
+
+
+        public ActionResult PopisOdabranih()
+        {          
+            
+            return View(db.Kolegij.ToList().Where(x => x.Odabran == true).ToList());
+        }
+
+        // GET: Kolegij/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Termini termini = db.Termini.Find(id);
-            if (termini == null)
+            Kolegij kolegij = db.Kolegij.Find(id);
+            if (kolegij == null)
             {
                 return HttpNotFound();
             }
-            return View(termini);
+            return View(kolegij);
         }
 
-        // GET: Termini/Create
+        // GET: Kolegij/Create
         public ActionResult Create()
         {
-            if(Session["Student"] == null && Session["Profesor"] == null)
-            {
-                return RedirectToAction("Index", "Home");
-                //return View("~/Views/Home/Index.cshtml");
-            }
-            ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv");
-            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             return View();
         }
 
-        // POST: Termini/Create
+        // POST: Kolegij/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TerminiID,ProfesorID,KolegijID,Dan_Tjedan,Vrijeme_Od,Vrijeme_Do")] Termini termini)
+        public ActionResult Create([Bind(Include = "KolegijID,Naziv,Odabran")] Kolegij kolegij)
         {
             if (ModelState.IsValid)
             {
-                db.Termini.Add(termini);
+                db.Kolegij.Add(kolegij);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
 
-            ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
-            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", termini.ProfesorID);
-            return View(termini);
+            return View(kolegij);
         }
 
-        // GET: Termini/Edit/5
+        // GET: Kolegij/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Termini termini = db.Termini.Find(id);
-            if (termini == null)
+            Kolegij kolegij = db.Kolegij.Find(id);
+            if (kolegij == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
-            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", termini.ProfesorID);
-            return View(termini);
+            return View(kolegij);
         }
 
-        // POST: Termini/Edit/5
+        // POST: Kolegij/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TerminiID,ProfesorID,KolegijID,Dan_Tjedan,Vrijeme_Od,Vrijeme_Do")] Termini termini)
+        public ActionResult Edit([Bind(Include = "KolegijID,Naziv,Odabran")] Kolegij kolegij)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(termini).State = EntityState.Modified;
+                db.Entry(kolegij).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index","Home");
             }
-            ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
-            ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", termini.ProfesorID);
-            return View(termini);
+            return View(kolegij);
         }
 
-        // GET: Termini/Delete/5
+        // GET: Kolegij/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Termini termini = db.Termini.Find(id);
-            if (termini == null)
+            Kolegij kolegij = db.Kolegij.Find(id);
+            if (kolegij == null)
             {
                 return HttpNotFound();
             }
-            return View(termini);
+            return View(kolegij);
         }
 
-        // POST: Termini/Delete/5
+        // POST: Kolegij/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Termini termini = db.Termini.Find(id);
-            db.Termini.Remove(termini);
+            Kolegij kolegij = db.Kolegij.Find(id);
+            db.Kolegij.Remove(kolegij);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }

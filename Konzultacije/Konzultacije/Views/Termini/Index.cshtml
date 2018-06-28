@@ -58,15 +58,23 @@
 
 <br /><hr />
 
-<div class="row">
+@if (Session["Student"] == null && Session["Profesor"] != null)
+{
+	  <div class="row">
 	  	<div class="col-md-6">
 	  		<p>Možete i ovdje napraviti unos novog termina</p>
 	  		<p>
 	  			@Html.ActionLink("Unos novog termina »", "Create", "Termini", new { @class = "btn btn-info" })
 	  </p>
 	  </div>
+	  </div>
+}
+<br />
+
+	<div class="row">
+
 	  <div class="col-md-6">
-	  	<p>I možete se vratiti na početnu stranicu</p>
+	  	<p>Ovdje se možete vratiti na početnu stranicu</p>
 	  	<p>
 	  		@Html.ActionLink("Natrag na početnu »", "Index", "Home", "Upit", new { @class = "btn btn-info" })
 	  </p>

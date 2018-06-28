@@ -1,10 +1,10 @@
 ﻿@model Konzultacije.Models.Profesor
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Izmjena podataka o profesoru";
 }
 
-<h4>Izmjena podataka o profesoru @Html.DisplayFor(model => model.Ime_I_Prezime)</h4>
+<h3>@ViewBag.Title @Html.DisplayFor(model => model.Ime_I_Prezime)</h3>
 
 
 @using (Html.BeginForm())
@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" , @readonly = true } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,13 +41,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Aktivacijski_Link, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Aktivacijski_Link, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Aktivacijski_Link, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Aktivan, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -61,7 +61,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Spremi promjene" class="btn btn-outline-warning" />
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@
 
 	<div class="row">
 		<div class="col-sm-6">
-			@Html.ActionLink("Natrag na početnu »", "Index", "Home", "Upit", new { @class = "btn btn-info" })
+			@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
 		</div>
 	</div>
 

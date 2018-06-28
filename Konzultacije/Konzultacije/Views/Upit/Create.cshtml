@@ -21,7 +21,7 @@
             @Html.LabelFor(model => model.StudentID, "Ime Studenta", htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
 				@*@Html.TextBoxFor(model => model.StudentID, new { @Value = ViewBag.Name })*@
-				@Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control" })
+				@Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control", @readonly = true })
 				@Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
 			</div>
         </div>
@@ -70,7 +70,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Stvori upit" class="btn btn-outline-primary" />
             </div>
         </div>
     </div>
@@ -78,11 +78,11 @@
 
 	<div class="col-md-6">
 		<div>
-			@Html.ActionLink("Natrag na listu »", "Index", "Student", new { @class = "btn btn-info" })
+			@Html.ActionLink("Natrag na listu »", "Index", "Upit", new { id =(int)Session["Student"]}, new { @class = "btn btn-info" })
 		</div>
 		<br />
 		<div>
-			@Html.ActionLink("Natrag na početnu »", "Index", "Home", "Upit", new { @class = "btn btn-info" })
+			@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
 		</div>
 
 	</div>
