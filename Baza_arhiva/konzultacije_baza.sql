@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS Termini(
 	vrijeme_do TIME NOT NULL
 );
 
-
+DROP TABLE kolegij_profesor
 CREATE TABLE IF NOT EXISTS Kolegij_profesor(
 	id_kolegij_profesor INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
 	id_profesor INT,
