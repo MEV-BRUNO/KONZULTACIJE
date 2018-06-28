@@ -22,7 +22,7 @@ namespace Konzultacije.Controllers
         //}
          public ActionResult Index(string ime)
         {
-            Kolegij kol = db.Kolegij.Find();
+            //Kolegij kol = db.Kolegij.Find();
             if(ime == null)
             {
                 var kolegij_Profesor = db.Kolegij_Profesor.Include(k => k.Kolegij).Include(k => k.Profesor);

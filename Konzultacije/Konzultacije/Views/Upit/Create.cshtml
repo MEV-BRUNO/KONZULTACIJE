@@ -78,7 +78,7 @@
 
 	<div class="col-md-6">
 		<div>
-			@Html.ActionLink("Natrag na listu »", "Index", "Student", new { @class = "btn btn-info" })
+			@Html.ActionLink("Natrag na listu »", "Index", "Upit", new { id =(int)Session["Student"]}, new { @class = "btn btn-info" })
 		</div>
 		<br />
 		<div>

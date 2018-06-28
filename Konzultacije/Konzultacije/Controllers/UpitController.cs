@@ -27,7 +27,7 @@ namespace Konzultacije.Controllers
             if (Session["Student"] != null)
             {
                 Student trenutanstu = db.Student.Find(id);
-                return View(upit.ToList().Where(x => x.ProfesorID == trenutanstu.StudentID).ToList());
+                return View(upit.ToList().Where(x => x.StudentID == trenutanstu.StudentID).ToList());
             }
             return View(upit.ToList());
         }
