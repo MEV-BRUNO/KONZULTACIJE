@@ -51,7 +51,9 @@ namespace Konzultacije.Controllers
         // GET: Kolegij_Profesor/Create
         public ActionResult Create()
         {
-            
+            int a = (int)Session["Profesor"];
+            Profesor prof = db.Profesor.Find(a);
+            ViewBag.Profesor = prof.Ime_I_Prezime;
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv");
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             return View();
@@ -71,7 +73,9 @@ namespace Konzultacije.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            
+            int a = (int)Session["Profesor"];
+            Profesor prof = db.Profesor.Find(a);
+            ViewBag.Profesor = prof.Ime_I_Prezime;
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", kolegij_Profesor.KolegijID);
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", kolegij_Profesor.ProfesorID);
             return View(kolegij_Profesor);

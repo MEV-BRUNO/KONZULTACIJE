@@ -13,6 +13,8 @@ namespace Konzultacije.Controllers
     public class TerminiController : Controller
     {
         private BazaDbContext db = new BazaDbContext();
+        private Kolegij kol = new Kolegij();
+        private List<Kolegij> kollist = new List<Kolegij>();
 
         // GET: Termini
         public ActionResult Index()
@@ -44,6 +46,26 @@ namespace Konzultacije.Controllers
                 return RedirectToAction("Index", "Home");
                 //return View("~/Views/Home/Index.cshtml");
             }
+
+            int a = (int)Session["Profesor"];
+            Profesor prof = db.Profesor.Find(a);
+            ViewBag.Profesor = prof.Ime_I_Prezime;
+            var nesto = db.Kolegij_Profesor.Include(k => k.Kolegij).Include(k => k.Profesor).Where(x => x.ProfesorID == prof.ProfesorID).ToList();
+            var nesto1 = db.Kolegij.ToList();
+            foreach (Kolegij k in nesto1)
+            {
+                foreach(Kolegij_Profesor kolprof in nesto)
+                {
+                    if(k.Naziv == kolprof.Kolegij.Naziv)
+                    {
+                        kollist.Add(k);
+                    }
+
+                }
+                
+                
+            }
+            ViewBag.MojaLista = kollist;
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv");
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             return View();
@@ -63,6 +85,9 @@ namespace Konzultacije.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            int a = (int)Session["Profesor"];
+            Profesor prof = db.Profesor.Find(a);
+            ViewBag.Profesor = prof.Ime_I_Prezime;
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", termini.ProfesorID);
             return View(termini);

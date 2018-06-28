@@ -37,12 +37,12 @@ namespace Konzultacije.Models
         [Display(Name = "Datum termina")]
         [DataType(DataType.DateTime)]
         [Required(ErrorMessage = "Niste popunili {0}.")]
-        [DisplayFormat(DataFormatString = "{0} dd.MM.yyyy", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Dan_Tjedan { get; set; }
 
         [Column("vrijeme_od")]
         [Display(Name = "Vrijeme od")]
-        [DisplayFormat(DataFormatString = "{0} hh:mm:ss", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:hh:mm:ss}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "Polje {0} je nepopunjeno.")]
         public DateTime Vrijeme_Od { get; set; }
 

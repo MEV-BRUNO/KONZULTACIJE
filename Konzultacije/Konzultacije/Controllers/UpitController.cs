@@ -50,6 +50,9 @@ namespace Konzultacije.Controllers
         // GET: Upit/Create
         public ActionResult Create()
         {
+            int a = (int)Session["Student"];
+            Student stu = db.Student.Find(a);
+            ViewBag.Student = stu.Ime_I_Prezime;
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime");
             return View();
@@ -69,6 +72,9 @@ namespace Konzultacije.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            int a = (int)Session["Student"];
+            Student stu = db.Student.Find(a);
+            ViewBag.Student = stu.Ime_I_Prezime;
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
             return View(upit);
