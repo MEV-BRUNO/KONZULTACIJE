@@ -26,7 +26,7 @@
 	<div class="col-md-4">
 		<h4>Upiti profesorima</h4>
 		<p>Ovdje možete vidjeti sve upite koje ste poslali profesorima.</p>
-		<p>@Html.ActionLink("Popis svih upita »", "Index", "Upit", "Student", new { @class = "btn btn-info" })</p>
+		<p>@Html.ActionLink("Popis svih upita »", "Index", "Upit", new { id = Model.StudentID}, new { @class = "btn btn-info" })</p>
 
 		<p>Ovjde možete napraviti novi upit.</p>
 		<p>@Html.ActionLink("Unos novog upita »", "Create", "Upit", "Student", new { @class = "btn btn-success" })</p>

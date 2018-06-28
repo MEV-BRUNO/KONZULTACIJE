@@ -22,12 +22,14 @@ namespace Konzultacije.Controllers
         //}
          public ActionResult Index(string ime)
         {
+            Kolegij kol = db.Kolegij.Find();
             if(ime == null)
             {
                 var kolegij_Profesor = db.Kolegij_Profesor.Include(k => k.Kolegij).Include(k => k.Profesor);
                 return View(kolegij_Profesor.ToList());
             }
             var kolegijprof = db.Kolegij_Profesor.Include(k => k.Kolegij).Include(k => k.Profesor).Where(k => k.Profesor.Ime_I_Prezime == ime);
+
             return View(kolegijprof.ToList());
         }
 

@@ -15,9 +15,20 @@ namespace Konzultacije.Controllers
         private BazaDbContext db = new BazaDbContext();
 
         // GET: Upit
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var upit = db.Upit.Include(u => u.Profesor).Include(u => u.Student);
+            if (Session["Profesor"]!=null)
+            { 
+            Profesor trenutanprof = db.Profesor.Find(id);
+            return View(upit.ToList().Where(x => x.ProfesorID == trenutanprof.ProfesorID).ToList());
+            }
+
+            if (Session["Student"] != null)
+            {
+                Student trenutanstu = db.Student.Find(id);
+                return View(upit.ToList().Where(x => x.ProfesorID == trenutanstu.StudentID).ToList());
+            }
             return View(upit.ToList());
         }
 
