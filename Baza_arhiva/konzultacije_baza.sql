@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS Kolegij_profesor(
 	FOREIGN KEY(id_kolegij) REFERENCES Kolegij(id_kolegij)
 );
 
-
+INSERT INTO Kolegij_profesor VALUES(NULL, 1,5);
 
 INSERT INTO studij VALUES (NULL, 'Računarstvo');
 INSERT INTO studij VALUES (NULL, 'Menadžment turizma i sporta');

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Konzultacije.Models.Kolegij_Profesor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kolegij.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kolegij.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profesor.Ime_I_Prezime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Kolegij_ProfesorID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Kolegij_ProfesorID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Kolegij_ProfesorID })
+        </td>
+    </tr>
+}
+
+</table>

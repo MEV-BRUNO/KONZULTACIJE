@@ -39,7 +39,7 @@ namespace Konzultacije.Models
         [Column("datum")]
         [Display(Name = "Datum upita")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0: hh:mm:ss dd.MM.yyyy.}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0} hh:mm:ss dd.MM.yyyy.", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "{0} je obavezno polje.")]
         public DateTime Datum { get; set; }
 
