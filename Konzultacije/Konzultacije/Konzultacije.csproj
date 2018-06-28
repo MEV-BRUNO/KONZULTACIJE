@@ -201,7 +201,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KolegijController.cs" />
-    <Compile Include="Controllers\Kolegij_Profesor1Controller.cs" />
     <Compile Include="Controllers\Kolegij_ProfesorController.cs" />
     <Compile Include="Controllers\ProfesorController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -347,11 +346,6 @@
     <Content Include="Views\Kolegij_Profesor\Details.cshtml" />
     <Content Include="Views\Kolegij_Profesor\Edit.cshtml" />
     <Content Include="Views\Kolegij_Profesor\Index.cshtml" />
-    <Content Include="Views\Kolegij_Profesor1\Create.cshtml" />
-    <Content Include="Views\Kolegij_Profesor1\Delete.cshtml" />
-    <Content Include="Views\Kolegij_Profesor1\Details.cshtml" />
-    <Content Include="Views\Kolegij_Profesor1\Edit.cshtml" />
-    <Content Include="Views\Kolegij_Profesor1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
