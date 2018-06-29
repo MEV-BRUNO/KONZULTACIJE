@@ -58,11 +58,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.Odgovoren)
         </td>
+		@if (Session["Profesor"] != null)
+		{
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UpitID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UpitID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UpitID })
+            @Html.ActionLink("Odgovori na upit", "Edit", new { id = item.UpitID }, new { @class = "btn btn-outline-warning"}) 
+		</td>
+		
+		<td>
+            @*@Html.ActionLink("Detalji", "Details", new { id=item.UpitID }) |*@
+            
+			@Html.ActionLink("Obriši upit", "Delete", new { id=item.UpitID }, new { @class = "btn btn-outline-danger"})
         </td>
+		}
     </tr>
 }
 

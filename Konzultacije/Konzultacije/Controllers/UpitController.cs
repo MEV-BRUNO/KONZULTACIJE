@@ -54,9 +54,10 @@ namespace Konzultacije.Controllers
             Student stu = db.Student.Find(a);
             ViewBag.Student = stu.Ime_I_Prezime;
 
-            ViewBag.TerminiID = new SelectList(db.Termini, "TerminID", "TerminID");
+            
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime");
+            ViewBag.TerminID = new SelectList(db.Termini, "TerminiID", "TerminiID");
             return View();
         }
 
@@ -65,22 +66,27 @@ namespace Konzultacije.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UpitID,StudentID,ProfesorID,TerminID,Naslov,Opis,Odgovoren")] Upit upit)
+        public ActionResult Create([Bind(Include = "UpitID,ProfesorID,TerminID,Naslov,Opis,Odgovor,Odgovoren")] Upit upit)
         {
+            int a = (int)Session["Student"];
+            Student stu = db.Student.Find(a);
+            ViewBag.Student = stu.Ime_I_Prezime;
+
+
             if (ModelState.IsValid)
             {
+                upit.StudentID = stu.StudentID;
                 db.Upit.Add(upit);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
 
-            int a = (int)Session["Student"];
-            Student stu = db.Student.Find(a);
-            ViewBag.Student = stu.Ime_I_Prezime;
+            
 
-            ViewBag.TerminiID = new SelectList(db.Termini, "TerminID", "TerminID", upit.TerminID);
+            
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
+            ViewBag.TerminID = new SelectList(db.Termini, "TerminiID", "TerminiID", upit.TerminID);
             return View(upit);
         }
 
@@ -97,9 +103,10 @@ namespace Konzultacije.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.TerminiID = new SelectList(db.Termini, "TerminID", "TerminID", upit.TerminID);
+            
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
+            ViewBag.TerminID = new SelectList(db.Termini, "TerminiID", "TerminiID", upit.TerminID);
             return View(upit);
         }
 
@@ -108,18 +115,22 @@ namespace Konzultacije.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UpitID,StudentID,ProfesorID,TerminID,Naslov,Opis,Odgovoren")] Upit upit)
+        public ActionResult Edit([Bind(Include = "UpitID,StudentID,ProfesorID,TerminID,Naslov,Opis,Odgovor,Odgovoren")] Upit upit)
         {
+
+            
             if (ModelState.IsValid)
             {
+                upit.Odgovoren = true;
                 db.Entry(upit).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
 
-            ViewBag.TerminiID = new SelectList(db.Termini, "TerminID", "TerminID", upit.TerminID);
+            
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
+            ViewBag.TerminID = new SelectList(db.Termini, "TerminiID", "TerminiID", upit.TerminID);
             return View(upit);
         }
 

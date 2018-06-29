@@ -55,9 +55,9 @@ CREATE TABLE IF NOT EXISTS Termini(
 	FOREIGN KEY(id_profesor) REFERENCES Profesor(id_profesor),
 	id_kolegij INT,
 	FOREIGN KEY(id_kolegij) REFERENCES Kolegij(id_kolegij),
-	dan_tjedan DATETIME NOT NULL,
-	vrijeme_od TIME NOT NULL,
-	vrijeme_do TIME NOT NULL
+	dan_tjedan DATETIME ,
+	vrijeme_od DATETIME ,
+	vrijeme_do DATETIME 
 );
 
 
