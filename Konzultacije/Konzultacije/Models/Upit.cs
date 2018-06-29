@@ -28,16 +28,20 @@ namespace Konzultacije.Models
         [ForeignKey("Profesor")]
         public int ProfesorID { get; set; }
         public virtual Profesor Profesor { get; set; }
-        
-        
 
 
-        [Column("datum")]
-        [Display(Name = "Datum upita")]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0: hh:mm:ss dd.MM.yyyy.}", ApplyFormatInEditMode = true)]
-        [Required(ErrorMessage = "{0} je obavezno polje.")]
-        public DateTime Datum { get; set; }
+
+        [Column("id_termina")]
+        [Display(Name = "ID Termina")]
+        [ForeignKey("Termini")]
+        public int TerminID { get; set; }
+        public virtual Termini Termini { get; set; }
+        //[Column("datum")]
+        //[Display(Name = "Datum upita")]
+        //[DataType(DataType.DateTime)]
+        //[DisplayFormat(DataFormatString = "{0} hh:mm:ss dd.MM.yyyy.", ApplyFormatInEditMode = true)]
+        //[Required(ErrorMessage = "{0} je obavezno polje.")]
+        //public DateTime Datum { get; set; }
 
 
         [Column("naslov")]
@@ -51,10 +55,15 @@ namespace Konzultacije.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezno polje.")]
         public string Opis { get; set; }
 
+        [Column("odgovor")]
+        [Display(Name = "Odgovor")]
+        public string Odgovor { get; set; }
 
         [Column("odgovoren")]
         [Display(Name = "Odgovoreno")]
         public bool Odgovoren { get; set; }
+
+        
 
     }
 }

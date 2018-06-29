@@ -8,19 +8,30 @@
 <div>
 	<div class="col-md-12">
 		<h5>Informacije o projektu</h5>
-		<p>Ovdje neka kolega Vidović upiše svoj tekst.</p>
+		<p>Za potrebe rada aplikacije i zapisivanja podataka o poslanim podacima o potrošnji, 
+		koristi se MySQL baza podataka. Web aplikacija je izrađena u MS .NET MVC tehnologiji.</p>
 	</div>
 
 	<div class="col-md-12">
 		<h5>Opis projekta</h5>
-		<p>Ovdje neka kolega Vidović upiše svoj tekst.</p>
+		<p>U aplikaciji se vode informacije o profesorima, njihovim terminima konzultacija s obzirom na kolegij te
+		studentima koji imaju uvid u termine te mogu putem aplikacije zatražiti termin konzultacije i poslati upit.</p>
 	</div>
 
 	<div class="col-md-12">
 		<h5>Cilj projekta</h5>
-		<p>Ovdje neka kolega Vidović upiše svoj tekst.</p>
+		<p>
+			Cilj ovog projekta je razvoj kvalitetne web aplikacije za vođenje informacija o
+			konzultacijama te mogućnost najava studenata za termin konzultacije.
+		</p>
 	</div>
 </div>
 
-
-@Html.ActionLink("Kontakt developera ove aplikacije", "Contact", "Home")
+<div class="row">
+	@Html.ActionLink("Kontakt developera ove aplikacije", "Contact", "Home", null, new { @class = "btn btn-primary" })
+</div>
+<br />
+	<div class="row">
+		@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
+	
+</div>

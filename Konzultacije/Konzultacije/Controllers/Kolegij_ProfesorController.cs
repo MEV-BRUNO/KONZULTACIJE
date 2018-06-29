@@ -51,7 +51,9 @@ namespace Konzultacije.Controllers
         // GET: Kolegij_Profesor/Create
         public ActionResult Create()
         {
-            
+            int a = (int)Session["Profesor"];
+            Profesor prof = db.Profesor.Find(a);
+            ViewBag.Profesor = prof.Ime_I_Prezime;
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv");
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             return View();
@@ -62,10 +64,16 @@ namespace Konzultacije.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Kolegij_ProfesorID,ProfesorID,KolegijID")] Kolegij_Profesor kolegij_Profesor)
+        public ActionResult Create([Bind(Include = "Kolegij_ProfesorID,KolegijID")] Kolegij_Profesor kolegij_Profesor)
         {
+
+            int a = (int)Session["Profesor"];
+            Profesor prof = db.Profesor.Find(a);
+            ViewBag.Profesor = prof.Ime_I_Prezime;
             if (ModelState.IsValid)
             {
+                
+                kolegij_Profesor.ProfesorID = prof.ProfesorID;
                 db.Kolegij_Profesor.Add(kolegij_Profesor);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
