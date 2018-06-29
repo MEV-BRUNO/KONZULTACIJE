@@ -52,7 +52,7 @@ namespace Konzultacije.Models
         [Required(ErrorMessage = "Polje {0} je nepopunjeno")]
         public DateTime Vrijeme_Do { get; set; }
 
-        
+        public virtual ICollection<Upit> Upits { get; set; }
 
     }
 }
