@@ -10,56 +10,64 @@
 <div>
     <h4>Upit</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
-        </dt>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Profesor.Ime_I_Prezime)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Profesor.Ime_I_Prezime)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Student.Ime_I_Prezime)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Student.Ime_I_Prezime)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Student.Ime_I_Prezime)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Student.Ime_I_Prezime)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Datum)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Termini.TerminiID)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Datum)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Termini.TerminiID)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Naslov)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Naslov)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Naslov)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Naslov)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Opis)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Opis)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Opis)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Opis)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Odgovoren)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Odgovor)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Odgovoren)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Odgovor)
+		</dd>
 
-    </dl>
+		<dt>
+			@Html.DisplayNameFor(model => model.Odgovoren)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Odgovoren)
+		</dd>
+
+	</dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()

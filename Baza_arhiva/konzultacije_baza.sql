@@ -33,15 +33,18 @@ CREATE TABLE IF NOT EXISTS Student(
 	aktivan BOOL
 );
 
+
 CREATE TABLE IF NOT EXISTS Upit(
 	id_upit INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	id_student INT,
 	FOREIGN KEY(id_student) REFERENCES Student(id_student),
 	id_profesor INT,
 	FOREIGN KEY(id_profesor) REFERENCES Profesor(id_profesor),
-	datum DATETIME NOT NULL,
+	id_termina INT, 
+	FOREIGN KEY(id_termina) REFERENCES Termini(id_termina),
 	naslov VARCHAR(225),
 	opis VARCHAR(225),
+	odgovor VARCHAR(225),
 	odgovoren BOOL
 );
 
@@ -52,9 +55,9 @@ CREATE TABLE IF NOT EXISTS Termini(
 	FOREIGN KEY(id_profesor) REFERENCES Profesor(id_profesor),
 	id_kolegij INT,
 	FOREIGN KEY(id_kolegij) REFERENCES Kolegij(id_kolegij),
-	dan_tjedan DATETIME NOT NULL,
-	vrijeme_od TIME NOT NULL,
-	vrijeme_do TIME NOT NULL
+	dan_tjedan DATETIME ,
+	vrijeme_od DATETIME ,
+	vrijeme_do DATETIME 
 );
 
 
@@ -66,7 +69,7 @@ CREATE TABLE IF NOT EXISTS Kolegij_profesor(
 	FOREIGN KEY(id_kolegij) REFERENCES Kolegij(id_kolegij)
 );
 
-
+INSERT INTO Kolegij_profesor VALUES(NULL, 1,5);
 
 INSERT INTO studij VALUES (NULL, 'Računarstvo');
 INSERT INTO studij VALUES (NULL, 'Menadžment turizma i sporta');

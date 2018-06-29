@@ -46,11 +46,14 @@
 			<td>
 				@Html.DisplayFor(modelItem => item.Vrijeme_Do)
 			</td>
+			@if (Session["Profesor"] != null)
+			{
 			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.TerminiID }) |
-				@Html.ActionLink("Details", "Details", new { id = item.TerminiID }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.TerminiID })
+				@Html.ActionLink("Promjeni termin", "Edit", new { id = item.TerminiID }, new { @class= "btn btn-outline-warning"}) 
+			
+				@Html.ActionLink("Obriši konzultaciju", "Delete", new { id = item.TerminiID }, new { @class = "btn btn-outline-danger"})
 			</td>
+			}
 		</tr>
 	}
 

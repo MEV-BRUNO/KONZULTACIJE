@@ -9,27 +9,31 @@
 
 
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Student.Ime_I_Prezime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Datum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Naslov)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Opis)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Odgovoren)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Student.Ime_I_Prezime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Termini.TerminiID)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Naslov)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Opis)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Odgovor)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Odgovoren)
+		</th>
+
+		<th></th>
+	</tr>
 
 @foreach (var item in Model) {
     <tr>
@@ -40,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.Student.Ime_I_Prezime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Datum)
+            @Html.DisplayFor(modelItem => item.Termini.TerminiID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Naslov)
@@ -48,14 +52,24 @@
         <td>
             @Html.DisplayFor(modelItem => item.Opis)
         </td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Odgovor)
+		</td>
         <td>
             @Html.DisplayFor(modelItem => item.Odgovoren)
         </td>
+		@if (Session["Profesor"] != null)
+		{
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UpitID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UpitID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UpitID })
+            @Html.ActionLink("Odgovori na upit", "Edit", new { id = item.UpitID }, new { @class = "btn btn-outline-warning"}) 
+		</td>
+		
+		<td>
+            @*@Html.ActionLink("Detalji", "Details", new { id=item.UpitID }) |*@
+            
+			@Html.ActionLink("Obriši upit", "Delete", new { id=item.UpitID }, new { @class = "btn btn-outline-danger"})
         </td>
+		}
     </tr>
 }
 

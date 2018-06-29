@@ -26,11 +26,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Datum)
+            @Html.DisplayNameFor(model => model.Termini.TerminiID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Datum)
+            @Html.DisplayFor(model => model.Termini.TerminiID)
         </dd>
 
         <dt>
@@ -49,6 +49,13 @@
             @Html.DisplayFor(model => model.Opis)
         </dd>
 
+		<dt>
+			@Html.DisplayNameFor(model => model.Odgovor)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Odgovor)
+		</dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Odgovoren)
         </dt>
@@ -60,6 +67,5 @@
     </dl>
 </div>
 <p>
-	@Html.ActionLink("Edit", "Edit", new { id = Model.UpitID }) 
 	@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
 </p>

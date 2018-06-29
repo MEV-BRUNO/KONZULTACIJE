@@ -1,7 +1,7 @@
 ﻿@{
 	ViewBag.Title = "Kontakt developera";
 }
-<br/>
+<br />
 <h2>@ViewBag.Title.</h2>
 
 
@@ -16,3 +16,8 @@
 	<strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
 	<strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
+
+<div class="row">
+	@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
+
+</div>
