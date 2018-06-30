@@ -35,9 +35,9 @@
 
 	
 	<div class="form-group">
-		@Html.LabelFor(model => model.TerminID, "TerminID", htmlAttributes: new { @class = "control-label col-md-2" })
+		@Html.LabelFor(model => model.TerminID, "Naziv Kolegija", htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
-			@Html.DropDownList("TerminID", null, htmlAttributes: new { @class = "form-control" })
+			@Html.DropDownList("TerminID", new SelectList(ViewBag.MojaLista, "KolegijID", "Naziv"), htmlAttributes: new { @class = "form-control" })
 			@Html.ValidationMessageFor(model => model.TerminID, "", new { @class = "text-danger" })
 		</div>
 	</div>
@@ -64,7 +64,7 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.Odgovor, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.TextAreaFor(model => model.Odgovor, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.TextAreaFor(model => model.Odgovor, new { htmlAttributes = new { @class = "form-control" , @Value = "Test"} })
 				@Html.ValidationMessageFor(model => model.Odgovor, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -88,16 +88,20 @@
 </div>
 }
 
-	<div class="col-md-6">
-		<div>
-			@Html.ActionLink("Natrag na listu »", "Index", "Upit", new { id =(int)Session["Student"]}, new { @class = "btn btn-info" })
-		</div>
-		<br />
-		<div>
-			@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
-		</div>
-
+<div class="col-md-6">
+	<div>
+		@Html.ActionLink("Natrag na popis upita »", "Index", "Upit", new { id = (int)Session["Student"] }, new { @class = "btn btn-info" })
 	</div>
+	<br />
+	<div>
+		@Html.ActionLink("Natrag na popis termina »", "Index", "Termini",null, new { @class = "btn btn-danger" })
+	</div>
+	<br />
+	<div>
+		@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
+	</div>
+
+</div>
 
 
 @section Scripts {

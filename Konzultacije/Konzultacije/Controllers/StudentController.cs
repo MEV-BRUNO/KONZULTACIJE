@@ -14,6 +14,7 @@ namespace Konzultacije.Controllers
     {
         private BazaDbContext db = new BazaDbContext();
 
+
         // GET: Student
         public ActionResult Popis()
         {
@@ -34,11 +35,20 @@ namespace Konzultacije.Controllers
         // GET: Student/Details/5
         public ActionResult Details(int? id)
         {
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Student student = db.Student.Find(id);
+
+            int kolslova = student.Lozinka.Count();
+            var pass = "";
+            for (int i = 0; i < kolslova; i++)
+            {
+                pass = pass + "•";
+            }
+            ViewBag.Pass = pass;
             if (id == (int)Session["Student"])
             {
                 return View(student);

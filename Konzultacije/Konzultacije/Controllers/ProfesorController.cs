@@ -41,6 +41,13 @@ namespace Konzultacije.Controllers
             }
             
             Profesor profesor = db.Profesor.Find(id);
+            int kolslova = profesor.Lozinka.Count();
+            var pass = "";
+            for (int i = 0; i < kolslova; i++)
+            {
+                pass = pass + "•";
+            }
+            ViewBag.Pass = pass;
             if (id == (int)Session["Profesor"])
             {
                 return View(profesor);
