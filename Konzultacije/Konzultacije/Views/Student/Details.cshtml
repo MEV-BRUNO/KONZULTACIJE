@@ -39,16 +39,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Lozinka)
+            @Html.Raw(ViewBag.Pass)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Aktivacijski_link)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Aktivacijski_link)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Aktivan)

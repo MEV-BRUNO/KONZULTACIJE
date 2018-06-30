@@ -13,6 +13,8 @@ namespace Konzultacije.Controllers
     public class Kolegij_ProfesorController : Controller
     {
         private BazaDbContext db = new BazaDbContext();
+        private List<Kolegij> kollist = new List<Kolegij>();
+        private Kolegij kolegij = new Kolegij();
 
         // GET: Kolegij_Profesor
         //public ActionResult Index()
@@ -20,7 +22,7 @@ namespace Konzultacije.Controllers
         //    var kolegij_Profesor = db.Kolegij_Profesor.Include(k => k.Kolegij).Include(k => k.Profesor);
         //    return View(kolegij_Profesor.ToList());
         //}
-         public ActionResult Index(string ime)
+        public ActionResult Index(string ime)
         {
             //Kolegij kol = db.Kolegij.Find();
             if(ime == null)
@@ -54,6 +56,11 @@ namespace Konzultacije.Controllers
             int a = (int)Session["Profesor"];
             Profesor prof = db.Profesor.Find(a);
             ViewBag.Profesor = prof.Ime_I_Prezime;
+
+            
+
+            var listaKolegija = db.Kolegij.ToList().Where(x => x.Odabran == false);        
+            ViewBag.MojaLista = listaKolegija;
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv");
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             return View();
@@ -70,9 +77,11 @@ namespace Konzultacije.Controllers
             int a = (int)Session["Profesor"];
             Profesor prof = db.Profesor.Find(a);
             ViewBag.Profesor = prof.Ime_I_Prezime;
+
             if (ModelState.IsValid)
             {
-                
+                kolegij = db.Kolegij.Find(kolegij_Profesor.KolegijID);
+                kolegij.Odabran = true;
                 kolegij_Profesor.ProfesorID = prof.ProfesorID;
                 db.Kolegij_Profesor.Add(kolegij_Profesor);
                 db.SaveChanges();

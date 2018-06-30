@@ -46,13 +46,18 @@
 			<td>
 				@Html.DisplayFor(modelItem => item.Vrijeme_Do)
 			</td>
-			@if (Session["Profesor"] != null)
+
+			@if (Session["Profesor"] != null && item.Profesor.Ime_I_Prezime == ViewBag.Profesor)
 			{
-			<td>
-				@Html.ActionLink("Promjeni termin", "Edit", new { id = item.TerminiID }, new { @class= "btn btn-outline-warning"}) 
-			
-				@Html.ActionLink("Obriši konzultaciju", "Delete", new { id = item.TerminiID }, new { @class = "btn btn-outline-danger"})
-			</td>
+				<td>
+					@Html.ActionLink("Promjeni termin", "Edit", new { id = item.TerminiID }, new { @class = "btn btn-outline-warning" })
+
+					@Html.ActionLink("Obriši konzultaciju", "Delete", new { id = item.TerminiID }, new { @class = "btn btn-outline-danger" })
+				</td>
+			}
+			else
+			{
+				<td></td>
 			}
 		</tr>
 	}
@@ -63,24 +68,41 @@
 
 @if (Session["Student"] == null && Session["Profesor"] != null)
 {
-	  <div class="row">
-	  	<div class="col-md-6">
-	  		<p>Možete i ovdje napraviti unos novog termina</p>
-	  		<p>
-	  			@Html.ActionLink("Unos novog termina »", "Create", "Termini", new { @class = "btn btn-info" })
-	  </p>
-	  </div>
-	  </div>
+	<div class="row">
+		<div class="col-md-6">
+			<p>Možete i ovdje napraviti unos novog termina</p>
+			<p>
+				@Html.ActionLink("Unos novog termina »", "Create", "Termini", null , new { @class = "btn btn-info" })
+			</p>
+		</div>
+	</div>
 }
 <br />
-
+@if (Session["Student"] != null && Session["Profesor"] == null)
+{
 	<div class="row">
+		<div class="col-md-6">
+			<p>Možete i ovdje napraviti unos novog upita</p>
+			<p>
+				@Html.ActionLink("Unos novog upita »", "Create", "Upit", null , new { @class = "btn btn-info" })
+			</p>
+		</div>
+	</div>
+}
 
-	  <div class="col-md-6">
-	  	<p>Ovdje se možete vratiti na početnu stranicu</p>
-	  	<p>
-	  		@Html.ActionLink("Natrag na početnu »", "Index", "Home", "Upit", new { @class = "btn btn-info" })
-	  </p>
-	  </div>
+
+
+
+
+<br />
+
+<div class="row">
+
+	<div class="col-md-6">
+		<p>Ovdje se možete vratiti na početnu stranicu</p>
+		<p>
+			@Html.ActionLink("Natrag na početnu »", "Index", "Home", "Upit", new { @class = "btn btn-info" })
+		</p>
+	</div>
 
 </div>

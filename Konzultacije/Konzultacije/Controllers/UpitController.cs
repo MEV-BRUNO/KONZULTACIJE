@@ -13,6 +13,7 @@ namespace Konzultacije.Controllers
     public class UpitController : Controller
     {
         private BazaDbContext db = new BazaDbContext();
+        private List<Kolegij> kolegijs = new List<Kolegij>();
 
         // GET: Upit
         public ActionResult Index(int? id)
@@ -57,7 +58,14 @@ namespace Konzultacije.Controllers
             
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime");
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime");
-            ViewBag.TerminID = new SelectList(db.Termini, "TerminiID", "TerminiID");
+            ViewBag.TerminID = new SelectList(db.Termini, "TerminiID", "KolegijID");
+            var listatermina = db.Termini.Include(k => k.Kolegij).Include(k => k.Profesor).ToList();
+            foreach(Termini t in listatermina)
+            {
+                var trenutni = db.Kolegij.Find(t.KolegijID);
+                kolegijs.Add(trenutni);
+            }
+            ViewBag.MojaLista = kolegijs;
             return View();
         }
 
@@ -71,10 +79,20 @@ namespace Konzultacije.Controllers
             int a = (int)Session["Student"];
             Student stu = db.Student.Find(a);
             ViewBag.Student = stu.Ime_I_Prezime;
-
-
+            
             if (ModelState.IsValid)
             {
+                var listatermina = db.Termini.Include(k => k.Kolegij).Include(k => k.Profesor).ToList();
+                var kolegij = db.Kolegij.Find(upit.TerminID);
+                foreach (Termini t in listatermina)
+                {
+                    if (t.KolegijID == kolegij.KolegijID)
+                    {
+                        upit.TerminID = t.TerminiID;
+                    }
+                   
+                }
+
                 upit.StudentID = stu.StudentID;
                 db.Upit.Add(upit);
                 db.SaveChanges();
@@ -86,7 +104,7 @@ namespace Konzultacije.Controllers
             
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", upit.ProfesorID);
             ViewBag.StudentID = new SelectList(db.Student, "StudentID", "Ime_I_Prezime", upit.StudentID);
-            ViewBag.TerminID = new SelectList(db.Termini, "TerminiID", "TerminiID", upit.TerminID);
+            ViewBag.TerminID = new SelectList(db.Termini, "TerminiID",  "KolegijID", upit.TerminID);
             return View(upit);
         }
 

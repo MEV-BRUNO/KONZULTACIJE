@@ -30,17 +30,17 @@
             @Html.DisplayNameFor(model => model.Lozinka)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Lozinka)
-        </dd>
+		<dd>
+			@Html.Raw(ViewBag.Pass)
+		</dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Aktivacijski_Link)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Aktivacijski_Link)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Aktivan)

@@ -15,12 +15,18 @@ namespace Konzultacije.Controllers
         private BazaDbContext db = new BazaDbContext();
         private Kolegij kol = new Kolegij();
         private List<Kolegij> kollist = new List<Kolegij>();
+        
 
         // GET: Termini
         public ActionResult Index()
         {
             var termini = db.Termini.Include(t => t.Kolegij).Include(t => t.Profesor);
-
+            if (Session["Profesor"] != null)
+            {
+                int ajdi = (int)Session["Profesor"];
+                Profesor profesor = db.Profesor.Find(ajdi);
+                ViewBag.Profesor = profesor.Ime_I_Prezime;
+            }
             return View(termini.ToList());
         }
 
