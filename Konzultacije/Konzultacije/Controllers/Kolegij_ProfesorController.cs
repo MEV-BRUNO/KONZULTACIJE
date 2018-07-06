@@ -120,6 +120,7 @@ namespace Konzultacije.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Entry(kolegij_Profesor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
@@ -150,6 +151,7 @@ namespace Konzultacije.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Kolegij_Profesor kolegij_Profesor = db.Kolegij_Profesor.Find(id);
+            kolegij_Profesor.Kolegij.Odabran = false;
             db.Kolegij_Profesor.Remove(kolegij_Profesor);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
