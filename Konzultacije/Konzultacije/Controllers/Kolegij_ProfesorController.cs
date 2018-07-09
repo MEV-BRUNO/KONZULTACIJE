@@ -152,7 +152,32 @@ namespace Konzultacije.Controllers
         {
             Kolegij_Profesor kolegij_Profesor = db.Kolegij_Profesor.Find(id);
             kolegij_Profesor.Kolegij.Odabran = false;
+
+            //brisanje upita za taj termin
+            var upiti = db.Upit.ToList();
+           
+
+            //brisanje termina
+            var termini = db.Termini.ToList();
+            int x=0;
+            foreach(Termini t in termini)
+            {
+                if(t.KolegijID == kolegij_Profesor.KolegijID)
+                {
+                    x = t.TerminiID;
+                }
+                foreach (Upit u in upiti)
+                {
+                    if (u.TerminID == x)
+                    {
+                        db.Upit.Remove(u);
+                    }
+            }
+            }
+            Termini termin = db.Termini.Find(x);
+            
             db.Kolegij_Profesor.Remove(kolegij_Profesor);
+            db.Termini.Remove(termin);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }

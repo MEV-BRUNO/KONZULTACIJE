@@ -6,63 +6,63 @@
 
 <h3>@ViewBag.Title</h3>
 
-<h4>Jeste li sigurni da želite obrisati konzultaciju</h4>
+<h4>Jeste li sigurni da želite obrisati konzultaciju?</h4>
 <div>
-   
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Kolegij.Naziv)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kolegij.Naziv)
-        </dd>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Kolegij.Naziv)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.Kolegij.Naziv)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Profesor.Ime_I_Prezime)
-        </dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Profesor.Ime_I_Prezime)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Dan_Tjedan)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.Profesor.Ime_I_Prezime)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Dan_Tjedan)
-        </dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Dan_Tjedan)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Vrijeme_Od)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.Dan_Tjedan)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Vrijeme_Od)
-        </dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Vrijeme_Od)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Vrijeme_Do)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.Vrijeme_Od)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Vrijeme_Do)
-        </dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Vrijeme_Do)
+		</dt>
 
-    </dl>
+		<dd>
+			@Html.DisplayFor(model => model.Vrijeme_Do)
+		</dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+	</dl>
 
-	<div class="form-actions no-color">
-		<input type="submit" value="Obrisi konzultaciju" class="btn btn-outline-danger" /> 
-		
-			<div>
-				@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
-			</div>
-		
-	</div>
-    }
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-actions no-color">
+			<input type="submit" value="Obrisi konzultaciju" class="btn btn-outline-danger" />
+		</div>
+		<br />
+		<div>
+			@Html.ActionLink("Natrag na početnu »", "Index", "Home", null, new { @class = "btn btn-info" })
+		</div>
+	}
 </div>

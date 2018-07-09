@@ -42,14 +42,14 @@ namespace Konzultacije.Models
 
         [Column("vrijeme_od")]
         [Display(Name = "Vrijeme od")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Time)]
         [DisplayFormat(DataFormatString = "{0:HH:mm:ss}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "Polje {0} je nepopunjeno.")]
         public DateTime? Vrijeme_Od { get; set; }
 
         [Column("vrijeme_do")]
         [Display(Name = "Vrijeme do")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Time)]
         [DisplayFormat(DataFormatString = "{0:HH:mm:ss}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "Polje {0} je nepopunjeno")]
         public DateTime? Vrijeme_Do { get; set; }
