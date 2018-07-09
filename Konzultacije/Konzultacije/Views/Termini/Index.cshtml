@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Konzultacije.Models.Termini>
+﻿@using Konzultacije.Models
+@model IEnumerable<Konzultacije.Models.Termini>
 
 @{
 	ViewBag.Title = "Popis svih termina";
@@ -6,6 +7,23 @@
 
 <br />
 <h2>@ViewBag.Title</h2>
+
+@if (Session["Profesor"] == null)
+{
+	using (Html.BeginForm("Index", "Termini", FormMethod.Get))
+	{
+		<p>
+			Ime i prezime profesora: @Html.TextBox("ime_i_prezime")
+			<input type="submit" value="Traži"/>
+		
+		</p>
+
+		<p>
+			Naziv kolegija: @Html.TextBox("naziv")
+			<input type="submit" value="Traži"/>
+		</p>
+	}
+}
 
 
 <table class="table">

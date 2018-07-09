@@ -19,9 +19,13 @@ namespace Konzultacije.Controllers
         public ActionResult Index(int? id)
         {
             var upit = db.Upit.Include(u => u.Profesor).Include(u => u.Student).Include(u => u.Termini);
+
+            
+
             if (Session["Profesor"]!=null)
             { 
             Profesor trenutanprof = db.Profesor.Find(id);
+            
             return View(upit.ToList().Where(x => x.ProfesorID == trenutanprof.ProfesorID).ToList());
             }
 

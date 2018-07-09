@@ -68,8 +68,15 @@
         </td>
 		@if (Session["Profesor"] != null)
 		{
-        <td>
-            @Html.ActionLink("Odgovori na upit", "Edit", new { id = item.UpitID }, new { @class = "btn btn-outline-warning"}) 
+		<td>
+			@if (item.Odgovoren == false)
+			{
+				@Html.ActionLink("Odgovori na upit", "Edit", new { id = item.UpitID }, new { @class = "btn btn-outline-warning" })
+			}
+			else
+			{
+				@Html.ActionLink("Odgovori na upit", "Edit", new { id = item.UpitID }, new { @class = "btn btn-outline-warning disabled" })
+			}
 		</td>
 		
 		<td>

@@ -18,16 +18,33 @@ namespace Konzultacije.Controllers
         
 
         // GET: Termini
-        public ActionResult Index()
+        public ActionResult Index(string ime_i_prezime, string naziv)
         {
             var termini = db.Termini.Include(t => t.Kolegij).Include(t => t.Profesor);
+            var popis = from t in termini.ToList() select t;
+
+            if (!String.IsNullOrEmpty(ime_i_prezime))
+            {
+                popis = popis.Where(t => t.Profesor.Ime_I_Prezime.ToUpper().Contains(ime_i_prezime.ToUpper()));
+                return View(popis);
+            }
+                
+            if (!String.IsNullOrEmpty(naziv))
+            {
+                popis = popis.Where(t => t.Kolegij.Naziv.ToUpper().Contains(naziv.ToUpper()));
+                return View(popis);
+            }
+                
+
             if (Session["Profesor"] != null)
             {
                 int ajdi = (int)Session["Profesor"];
                 Profesor profesor = db.Profesor.Find(ajdi);
                 ViewBag.Profesor = profesor.Ime_I_Prezime;
+                termini = termini.Where(t => t.Profesor.Ime_I_Prezime == profesor.Ime_I_Prezime);
+                return View(termini);
             }
-            return View(termini.ToList());
+            return View(termini);
         }
 
      
@@ -92,10 +109,19 @@ namespace Konzultacije.Controllers
 
             if (ModelState.IsValid)
             {
+                //var listatermina = db.Termini.ToList();
+                //foreach(Termini t in listatermina)
+                //{
+                //    if (t.Kolegij.Naziv == termini.Kolegij.Naziv)
+                //    {
+
+                //    }
+                //}
+                
                 termini.ProfesorID = prof.ProfesorID;
                 db.Termini.Add(termini);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Termini");
             }
 
             
@@ -117,6 +143,14 @@ namespace Konzultacije.Controllers
             {
                 return HttpNotFound();
             }
+
+            int a = (int)Session["Profesor"];
+            Profesor prof = db.Profesor.Find(a);
+            ViewBag.Profesor = prof.Ime_I_Prezime;
+
+            Kolegij kol = db.Kolegij.Find(termini.KolegijID);
+            ViewBag.Kolegij = kol.Naziv;
+
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", termini.ProfesorID);
             return View(termini);
@@ -136,8 +170,14 @@ namespace Konzultacije.Controllers
                 termini.ProfesorID = prof.ProfesorID;
                 db.Entry(termini).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Termini");
             }
+
+            Kolegij kol = db.Kolegij.Find(termini.KolegijID);
+            ViewBag.Kolegij = kol.Naziv;
+
+
+            ViewBag.Profesor = prof.Ime_I_Prezime;
             ViewBag.KolegijID = new SelectList(db.Kolegij, "KolegijID", "Naziv", termini.KolegijID);
             ViewBag.ProfesorID = new SelectList(db.Profesor, "ProfesorID", "Ime_I_Prezime", termini.ProfesorID);
             return View(termini);
@@ -164,7 +204,15 @@ namespace Konzultacije.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Termini termini = db.Termini.Find(id);
-            db.Termini.Remove(termini);
+            var upiti = db.Upit.ToList();
+            foreach (Upit u in upiti)
+            {
+                if (u.TerminID == id)
+                {
+                    db.Upit.Remove(u);
+                }
+            }
+                db.Termini.Remove(termini);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }

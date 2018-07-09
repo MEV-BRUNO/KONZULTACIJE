@@ -24,6 +24,7 @@ namespace Konzultacije.Controllers
         public ActionResult Popis()
         {
             return View(db.Kolegij.ToList().Where(x => x.Odabran == false).ToList());
+            //return View(db.Kolegij.ToList());
         }
 
 
